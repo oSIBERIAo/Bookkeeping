@@ -10,6 +10,7 @@ import {
 import "./App.css"
 // eslint-disable-next-line
 import styled from "styled-components"
+import { Nav } from "./components/Nav"
 
 // eslint-disable-next-line
 const Wrapper = styled.div`
@@ -19,19 +20,9 @@ const Wrapper = styled.div`
   flex-direction: column;
 `
 const Main = styled.div`
-  border: 1px solid darkslategray;
+  //border: 1px solid darkslategray;
   flex-grow: 1;
   overflow: auto;
-`
-const Nav = styled.nav`
-  > ul {
-    display: flex;
-    > li {
-      width: 33.333%;
-      text-align: center;
-      padding: 16px;
-    }
-  }
 `
 
 function App() {
@@ -55,19 +46,7 @@ function App() {
             </Route>
           </Switch>
         </Main>
-        <Nav>
-          <ul>
-            <li>
-              <Link to="/tags">标签🏷️</Link>
-            </li>
-            <li>
-              <Link to="/money">记账🧾</Link>
-            </li>
-            <li>
-              <Link to="/statistics">统计📈</Link>
-            </li>
-          </ul>
-        </Nav>
+        <Nav />
       </Wrapper>
     </Router>
   )

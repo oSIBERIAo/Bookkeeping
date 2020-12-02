@@ -1,6 +1,10 @@
 @import-normalize;
 
 * {
+  outline: 1px dashed rgba(128, 128, 128, 0.25);
+}
+
+* {
   margin: 0;
   padding: 0;
 }
@@ -14,10 +18,6 @@
 ul,
 ol {
   list-style: none;
-}
-
-* {
-  outline: 1px dashed rgba(128, 128, 128, 0.25);
 }
 
 a {

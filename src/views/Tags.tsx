@@ -46,6 +46,29 @@ const NotesSection = styled.section`
         }
     }
 `
+const CategorySection = styled.section`
+    ul {
+        font-size: 24px;
+        display: flex;
+        background-color: #c4c4c4;
+        li {
+            width: 50%;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            &.selected::after {
+                content: "";
+                display: block;
+                height: 3px;
+                background: #666666;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                left: 0;
+            }
+        }
+    }
+`
 const NumberPadSection = styled.section``
 
 const Tags = () => {
@@ -66,6 +89,12 @@ const Tags = () => {
                     <input type="text" placeholder={"  请在这里添加备注"} />
                 </label>
             </NotesSection>
+            <CategorySection>
+                <ul>
+                    <li className={"selected"}>支出</li>
+                    <li>收入</li>
+                </ul>
+            </CategorySection>
             <NumberPadSection>
                 <div>100</div>
                 <div>

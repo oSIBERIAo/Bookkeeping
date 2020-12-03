@@ -10,8 +10,8 @@ import {
 import "./App.css"
 // eslint-disable-next-line
 
-import { Tags } from "./views/Tags"
 import { Money } from "./views/Money"
+import { Tags } from "./views/Tags"
 import { Statistics } from "./views/Statistics"
 
 function App() {

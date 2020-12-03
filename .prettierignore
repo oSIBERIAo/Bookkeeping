@@ -1,0 +1,13 @@
+# Ignore artifacts:
+# Ignore artifacts:
+config
+node_modules
+public
+scripts
+/src/react-app-env.d.ts
+/src/reportWebVitals.ts
+/src/setupTests.ts
+/workspace.code-workspace
+/yarn.lock
+/tsconfig.json
+/README.md

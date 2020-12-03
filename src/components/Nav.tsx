@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import React from "react"
 import { Icon } from "components/Icon"
 
@@ -12,13 +12,23 @@ const NavWrapper = styled.nav`
         > li {
             font-size: 10px;
             width: 33.333%;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            > .icon {
-                width: 30px;
-                height: 30px;
+            > a {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .icon {
+                    width: 30px;
+                    height: 30px;
+                }
+                &.selected {
+                    color: #272c35;
+                    font-weight: bold;
+                    .icon {
+                        width: 35px;
+                        height: 35px;
+                    }
+                }
             }
         }
     }
@@ -29,16 +39,22 @@ const Nav = () => {
         <NavWrapper>
             <ul>
                 <li>
-                    <Icon name={"tag"} />
-                    <Link to="/tags">标签🏷️</Link>
+                    <NavLink to="/tags" activeClassName="selected">
+                        <Icon name={"tag"} />
+                        标签🏷️
+                    </NavLink>
                 </li>
                 <li>
-                    <Icon name={"money"} />
-                    <Link to="/money">记账🧾</Link>
+                    <NavLink to="/money" activeClassName="selected">
+                        <Icon name={"money"} />
+                        记账🧾
+                    </NavLink>
                 </li>
                 <li>
-                    <Icon name={"statistics"} />
-                    <Link to="/statistics">统计📈</Link>
+                    <NavLink to="/statistics" activeClassName="selected">
+                        <Icon name={"statistics"} />
+                        统计📈
+                    </NavLink>
                 </li>
             </ul>
         </NavWrapper>

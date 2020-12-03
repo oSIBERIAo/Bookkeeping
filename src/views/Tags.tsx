@@ -69,7 +69,33 @@ const CategorySection = styled.section`
         }
     }
 `
-const NumberPadSection = styled.section``
+const NumberPadSection = styled.section`
+    display: flex;
+    flex-direction: column;
+    .output {
+        background-color: white;
+        font-size: 36px;
+        line-height: 72px;
+        text-align: right;
+        padding: 0 16px;
+        box-shadow: inset 0 -5px 5px -5px rgba(0, 0, 0, 0.25),
+            inset 0 5px 5px -5px rgba(0, 0, 0, 0.25);
+    }
+    .pad {
+        button {
+            float: left;
+            width: 25%;
+            height: 64px;
+            &.ok {
+                float: right;
+                height: 128px;
+            }
+            &.zero {
+                width: 50%;
+            }
+        }
+    }
+`
 
 const Tags = () => {
     return (
@@ -96,8 +122,8 @@ const Tags = () => {
                 </ul>
             </CategorySection>
             <NumberPadSection>
-                <div>100</div>
-                <div>
+                <div className={"output"}>100</div>
+                <div className={"pad clearfix"}>
                     <button>1</button>
                     <button>2</button>
                     <button>3</button>
@@ -109,8 +135,8 @@ const Tags = () => {
                     <button>7</button>
                     <button>8</button>
                     <button>9</button>
-                    <button>OK</button>
-                    <button>0</button>
+                    <button className={"ok"}>OK</button>
+                    <button className={"zero"}>0</button>
                     <button>.</button>
                 </div>
             </NumberPadSection>

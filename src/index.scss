@@ -25,6 +25,12 @@ a {
   color: inherit;
 }
 
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
 body {
   font-family: 'SF Pro SC', 'SF Pro Text', 'SF Pro Icons', 'PingFang SC',
   'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;

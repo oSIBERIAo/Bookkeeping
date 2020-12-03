@@ -3,7 +3,7 @@ import { Nav } from "./Nav"
 import styled from "styled-components"
 
 const Wrapper = styled.div`
-    border: 1px solid palevioletred;
+    //border: 1px solid palevioletred;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -13,13 +13,16 @@ const Main = styled.div`
     overflow: auto;
 `
 
-type Props = { children: React.ReactNode }
+type Props = {
+  children: React.ReactNode
+  className?: string
+}
 
 const Layout = (props: Props) => {
     return (
         <Wrapper>
-            <Main>{props.children}</Main>
-            <Nav />
+          <Main className={props.className}>{props.children}</Main>
+          <Nav />
         </Wrapper>
     )
 }

@@ -1,6 +1,7 @@
 import styled from "styled-components"
+import React, { useState } from "react"
 
-const CategorySection = styled.section`
+const Wrapper = styled.section`
     ul {
         font-size: 24px;
         display: flex;
@@ -23,4 +24,32 @@ const CategorySection = styled.section`
         }
     }
 `
+
+const CategorySection: React.FC = () => {
+    const categoryMap: { [index: string]: string } = {
+        "-": "支出",
+        "+": "收入",
+    }
+
+    const [category, setCategory] = useState("-")
+
+    return (
+        <Wrapper>
+            <ul>
+                {Object.keys(categoryMap).map((key) => (
+                    <li
+                        key={key}
+                        className={category === key ? "selected" : ""}
+                        onClick={() => {
+                            setCategory(key)
+                        }}
+                    >
+                        {categoryMap[key]}
+                    </li>
+                ))}
+            </ul>
+        </Wrapper>
+    )
+}
+
 export { CategorySection }

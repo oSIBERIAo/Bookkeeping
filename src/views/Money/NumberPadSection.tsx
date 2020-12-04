@@ -30,7 +30,16 @@ const Wrapper = styled.section`
 `
 
 const NumberPadSection: React.FC = () => {
-    const [output, setOutput] = useState("0")
+    const [output, _setOutput] = useState("0")
+
+    const setOutput = (o: string) => {
+        if (o.length > 16) {
+            o = o.slice(0, 16)
+        } else if (o.length === 0) {
+            o = "0"
+        }
+        _setOutput(o)
+    }
 
     const onClickButtonWrapper = (e: React.MouseEvent) => {
         console.log(e.target)
@@ -54,10 +63,17 @@ const NumberPadSection: React.FC = () => {
                 }
                 break
             case ".":
+                if (output.indexOf(".") >= 0) {
+                    return
+                } else {
+                    setOutput(output + text)
+                }
                 break
             case "删除":
+                setOutput(output.slice(1))
                 break
             case "清空":
+                setOutput("0")
                 break
             case "OK":
                 break

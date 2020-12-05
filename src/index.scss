@@ -67,3 +67,15 @@ button {
 :focus {
     *outline: none;
 }
+
+.icon {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+}
+
+.oneLine {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

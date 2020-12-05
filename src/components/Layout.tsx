@@ -14,15 +14,15 @@ const Main = styled.div`
 `
 
 type Props = {
-  children: React.ReactNode
-  className?: string
+    children: React.ReactNode
+    className?: string
 }
 
 const Layout = (props: Props) => {
     return (
         <Wrapper>
-          <Main className={props.className}>{props.children}</Main>
-          <Nav />
+            <Main className={props.className}>{props.children}</Main>
+            <Nav />
         </Wrapper>
     )
 }

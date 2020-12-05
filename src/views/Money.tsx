@@ -17,59 +17,29 @@ const Money = () => {
         category: "-",
         amount: "0",
     })
-    const changeTagsSection = (tag: string[]) => {
-        setSelected({
-            ...selected,
-            tag,
-        })
-    }
-    const changeNoteSection = (note: string) => {
-        setSelected({
-            ...selected,
-            note,
-        })
-    }
-    const changeCategorySection = (category: string) => {
-        setSelected({
-            ...selected,
-            category,
-        })
-    }
-    const changeNumberPadSection = (amount: string) => {
-        setSelected({
-            ...selected,
-            amount,
-        })
+
+    const onChang = (obj: Partial<typeof selected>) => {
+        setSelected({ ...selected, ...obj })
     }
 
     return (
         <MyLayout>
-            {selected.tag}
-            {selected.note}
-            {selected.category}
             <TagsSection
                 value={selected.tag}
-                onChange={(tag) => {
-                    changeTagsSection(tag)
-                }}
+                //解构赋值 {(tag) => onChang({ tag : tag })}
+                onChange={(tag) => onChang({ tag })}
             />
             <NoteSection
                 value={selected.note}
-                onChange={(note) => {
-                    changeNoteSection(note)
-                }}
+                onChange={(note) => onChang({ note })}
             />
             <CategorySection
                 value={selected.category}
-                onChange={(category) => {
-                    changeCategorySection(category)
-                }}
+                onChange={(category) => onChang({ category })}
             />
             <NumberPadSection
                 value={selected.amount}
-                onChange={(amount) => {
-                    changeNumberPadSection(amount)
-                }}
+                onChange={(amount) => onChang({ amount })}
                 onOK={() => {}}
             />
         </MyLayout>

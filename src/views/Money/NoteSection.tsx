@@ -23,14 +23,24 @@ const Wrapper = styled.section`
     }
 `
 
-const NoteSection: React.FC = () => {
-    const [note, setNote] = useState("")
+type Props = {
+    value: string
+    onChange: (selected: string) => void
+}
+
+const NoteSection: React.FC<Props> = (props) => {
+    // const [note, setNote] = useState("")
+    const note = props.value
+    const setNote = props.onChange
+
     const refInput = useRef<HTMLInputElement>(null)
+
     const onBlur = () => {
         if (refInput.current !== null) {
             setNote(refInput.current.value)
         }
     }
+
     return (
         <Wrapper>
             <label htmlFor="">

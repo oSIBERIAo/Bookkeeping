@@ -34,10 +34,17 @@ const Wrapper = styled.section`
     }
 `
 
-const TagsSection: React.FC = () => {
+type Props = {
+    value: string[]
+    onChange: (selected: string[]) => void
+}
+
+const TagsSection: React.FC<Props> = (props) => {
     const [tags, setTags] = useState<string[]>(["衣", "食", "住", "行"])
 
-    const [selectedTags, setSelectedTags] = useState<string[]>([])
+    // const [selectedTags, setSelectedTags] = useState<string[]>([])
+    const selectedTags = props.value
+    const setSelectedTags = props.onChange
 
     const onAddTag = () => {
         const newTag = prompt("输入新标签🏷️")

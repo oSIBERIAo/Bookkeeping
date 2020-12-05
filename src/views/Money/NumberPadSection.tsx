@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import React, { useState } from "react"
+import React from "react"
 
 const Wrapper = styled.section`
     display: flex;
@@ -29,55 +29,67 @@ const Wrapper = styled.section`
     }
 `
 
-const NumberPadSection: React.FC = () => {
-    const [output, _setOutput] = useState("0")
+const generateOutput = (text: any, output: string | string[]) => {
+    switch (text) {
+        case "0":
+        case "1":
+        case "2":
+        case "3":
+        case "4":
+        case "5":
+        case "6":
+        case "7":
+        case "8":
+        case "9":
+            if (output === "0") {
+                return text
+            } else {
+                return output + text
+            }
+        case ".":
+            if (output.indexOf(".") >= 0) {
+                return output
+            } else {
+                return output + text
+            }
+        case "删除":
+            return output.slice(0, -1)
+        case "清空":
+            return "0"
+        case "OK":
+            break
+    }
+}
 
-    const setOutput = (o: string) => {
-        if (o.length > 16) {
-            o = o.slice(0, 16)
-        } else if (o.length === 0) {
-            o = "0"
+type Props = {
+    value: string
+    onChange: (value: string) => void
+    onOK: () => void
+}
+
+const NumberPadSection: React.FC<Props> = (props) => {
+    // const [output, _setOutput] = useState("0")
+    const output = props.value
+    const _setOutput = props.onChange
+
+    const setOutput = (output: string) => {
+        if (output.length > 16) {
+            output = output.slice(0, 16)
+        } else if (output.length === 0) {
+            output = "0"
         }
-        _setOutput(o)
+        _setOutput(output)
     }
 
     const onClickButtonWrapper = (e: React.MouseEvent) => {
-        console.log(e.target)
         const text: any = (e.target as HTMLButtonElement).textContent
-        // console.log("text", text)
-        switch (text) {
-            case "0":
-            case "1":
-            case "2":
-            case "3":
-            case "4":
-            case "5":
-            case "6":
-            case "7":
-            case "8":
-            case "9":
-                if (output === "0") {
-                    setOutput(text)
-                } else {
-                    setOutput(output + text)
-                }
-                break
-            case ".":
-                if (output.indexOf(".") >= 0) {
-                    return
-                } else {
-                    setOutput(output + text)
-                }
-                break
-            case "删除":
-                setOutput(output.slice(1))
-                break
-            case "清空":
-                setOutput("0")
-                break
-            case "OK":
-                break
+        if (text === "OK") {
+            console.log("OK")
+            props.onOK()
+            return
         }
+        const newOutput = generateOutput(text, output)
+        setOutput(newOutput)
     }
 
     return (

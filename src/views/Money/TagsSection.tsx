@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import React from "react"
 import { useTags } from "../../useTags"
+import { createId } from "../../lib/createId"
 
 const Wrapper = styled.section`
     background-color: #fff;
@@ -51,7 +52,7 @@ const TagsSection: React.FC<Props> = (props) => {
     const onAddTag = () => {
         const newTag = prompt("输入新标签🏷️")
         if (newTag !== null) {
-            setTags([...tags, { id: Math.random(), name: newTag }])
+            setTags([...tags, { id: createId(), name: newTag }])
         }
     }
 

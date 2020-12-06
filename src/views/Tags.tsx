@@ -5,10 +5,12 @@ import { Icon } from "../components/Icon"
 import { useTags } from "../useTags"
 import { Link } from "react-router-dom"
 import { Button } from "../components/Button"
+import { Center } from "../components/Center"
+import { Space } from "../components/Space"
 
 const TagList = styled.ol`
+    background-color: white;
     li {
-        border-bottom: 1px solid #989898;
         display: flex;
         padding: 12px 16px 12px 0;
         margin-left: 16px;
@@ -20,17 +22,6 @@ const TagList = styled.ol`
             width: 1rem;
         }
     }
-`
-
-const Center = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-`
-
-const Space = styled.div`
-    height: 60px;
 `
 
 const Tags = () => {

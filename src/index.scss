@@ -60,8 +60,9 @@ code {
     color: blue;
 }
 
-button {
-    font-family: inherit;
+button,
+input {
+    font: inherit;
 }
 
 :focus {

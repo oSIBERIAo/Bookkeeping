@@ -36,35 +36,35 @@ const Wrapper = styled.section`
 `
 
 type Props = {
-    value: string[]
-    onChange: (selected: string[]) => void
+    value: number[]
+    onChange: (selected: number[]) => void
 }
 
 const TagsSection: React.FC<Props> = (props) => {
     // const [tags, setTags] = useState<string[]>(["衣", "食", "住", "行"])
     const { tags, setTags } = useTags()
 
-    // const [selectedTags, setSelectedTags] = useState<string[]>([])
-    const selectedTags = props.value
+    // const [selectedTagIds, setSelectedTags] = useState<string[]>([])
+    const selectedTagIds = props.value
     const setSelectedTags = props.onChange
 
     const onAddTag = () => {
         const newTag = prompt("输入新标签🏷️")
         if (newTag !== null) {
-            setTags([...tags, newTag])
+            setTags([...tags, { id: Math.random(), name: newTag }])
         }
     }
 
-    const onToggleTags = (tag: string) => {
-        if (selectedTags.indexOf(tag) >= 0) {
-            setSelectedTags(selectedTags.filter((t) => t !== tag))
+    const onToggleTags = (tagId: number) => {
+        if (selectedTagIds.indexOf(tagId) >= 0) {
+            setSelectedTags(selectedTagIds.filter((t) => t !== tagId))
         } else {
-            setSelectedTags([...selectedTags, tag])
+            setSelectedTags([...selectedTagIds, tagId])
         }
     }
 
-    const ifSelected = (tag: string) => {
-        return selectedTags.indexOf(tag) >= 0 ? "selected" : ""
+    const ifSelected = (tagId: number) => {
+        return selectedTagIds.indexOf(tagId) >= 0 ? "selected" : ""
     }
 
     return (
@@ -73,12 +73,12 @@ const TagsSection: React.FC<Props> = (props) => {
                 {tags.map((tag) => (
                     <li
                         onClick={() => {
-                            onToggleTags(tag)
+                            onToggleTags(tag.id)
                         }}
-                        key={tag}
-                        className={ifSelected(tag)}
+                        key={tag.id}
+                        className={ifSelected(tag.id)}
                     >
-                        {tag}
+                        {tag.name}
                     </li>
                 ))}
             </ol>

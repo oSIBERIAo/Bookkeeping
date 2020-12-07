@@ -18,33 +18,41 @@ const MyLayout = styled(Layout)`
     display: flex;
     flex-direction: column;
 `
+
+const CategorySectionWrapper = styled.div`
+    background-color: #c4c4c4;
+`
+
 const Money = () => {
     const [selected, setSelected] = useState(defaultSelected)
 
-    const { records, addRecord } = useRecords()
+    const { addRecord } = useRecords()
 
     const onChang = (obj: Partial<typeof selected>) => {
         setSelected({ ...selected, ...obj })
     }
 
     const submit = () => {
-        addRecord(selected)
-        alert("保存成功")
-        setSelected(defaultSelected)
+        if (addRecord(selected)) {
+            alert("保存成功")
+            setSelected(defaultSelected)
+        } else {
+            alert("保存失败")
+        }
     }
 
     return (
         <MyLayout>
-            {selected.tagIds}
-            <hr />
-            {selected.note}
-            <hr />
-            {selected.category}
-            <hr />
-            {selected.amount}
-            <hr />
-            records:{JSON.stringify(records)}
-            <hr />
+            {/*{selected.tagIds}*/}
+            {/*<hr />*/}
+            {/*{selected.note}*/}
+            {/*<hr />*/}
+            {/*{selected.category}*/}
+            {/*<hr />*/}
+            {/*{selected.amount}*/}
+            {/*<hr />*/}
+            {/*records:{JSON.stringify(records)}*/}
+            {/*<hr />*/}
             <TagsSection
                 value={selected.tagIds}
                 //解构赋值 {(tag) => onChang({ tag : tag })}
@@ -54,10 +62,12 @@ const Money = () => {
                 value={selected.note}
                 onChange={(note) => onChang({ note })}
             />
-            <CategorySection
-                value={selected.category}
-                onChange={(category) => onChang({ category })}
-            />
+            <CategorySectionWrapper>
+                <CategorySection
+                    value={selected.category}
+                    onChange={(category) => onChang({ category })}
+                />
+            </CategorySectionWrapper>
             <NumberPadSection
                 value={selected.amount}
                 onChange={(amount) => onChang({ amount })}

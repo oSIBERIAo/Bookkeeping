@@ -16,18 +16,12 @@ const useTags = () => {
         return tags.filter((tag) => tag.id === id)[0]
     }
     const updateTag = (tag: { id: number; name: string }) => {
-        const t = findTag(tag.id)
-        const index = tags.indexOf(t)
-        const tagsClone = JSON.parse(JSON.stringify(tags))
-        tagsClone.splice(index, 1, { id: tag.id, name: tag.name })
-        setTags(tagsClone)
+        const newTags = tags.map((e) => (e.id === tag.id ? { ...tag } : e))
+        setTags(newTags)
     }
     const deleteTag = (tag: { id: number; name: string }) => {
-        const t = findTag(tag.id)
-        const index = tags.indexOf(t)
-        const tagsClone = JSON.parse(JSON.stringify(tags))
-        tagsClone.splice(index, 1)
-        setTags(tagsClone)
+        const newTags = tags.filter((e) => e.id !== tag.id)
+        setTags(newTags)
     }
     return { tags, setTags, findTag, updateTag, deleteTag }
 }

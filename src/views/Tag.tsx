@@ -28,6 +28,10 @@ const Tag: React.FC = () => {
     let { id } = useParams<{ id: string }>()
     const tag = findTag(parseInt(id))
 
+    const onClickBack = () => {
+        window.history.back()
+    }
+
     const tagContent = (tag: { id: number; name: string }) => (
         <div>
             <InputWrapper>
@@ -57,7 +61,7 @@ const Tag: React.FC = () => {
     return (
         <Layout>
             <Topbar>
-                <Icon name="left" />
+                <Icon name="left" onClick={onClickBack} />
                 <span>编辑标签</span>
                 <span />
             </Topbar>

@@ -1,4 +1,5 @@
 import React from "react"
+import cs from "classnames"
 
 //批量引入 icons 内的全部 svg，requireContext 类型 IDE 自动补全
 const importAll = (requireContext: __WebpackModuleApi.RequireContext) =>
@@ -11,11 +12,12 @@ try {
 
 type Props = {
     name?: string
-}
+} & React.SVGAttributes<SVGSVGElement>
 
 const Icon = (props: Props) => {
+    const { name, children, className, ...rest } = props
     return (
-        <svg className="icon">
+        <svg className={cs("icon", className)} {...rest}>
             {props.name && <use xlinkHref={"#" + props.name} />}
         </svg>
     )

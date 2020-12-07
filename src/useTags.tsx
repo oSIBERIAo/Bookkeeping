@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { createId } from "./lib/createId"
+import { useUpdate } from "./hooks/useUpdate"
 
 const defaultTags = [
     { id: createId(), name: "衣" },
@@ -9,9 +10,20 @@ const defaultTags = [
 ]
 
 const useTags = () => {
-    const [tags, setTags] = useState<{ id: number; name: string }[]>(
-        defaultTags
-    )
+    const [tags, setTags] = useState<{ id: number; name: string }[]>([])
+    useEffect(() => {
+        // console.log("after mount")
+        let t = JSON.parse(window.localStorage.getItem("tags") || "[]")
+        if (t.length === 0) {
+            t = defaultTags
+        }
+        setTags(t)
+    }, [])
+
+    useUpdate(() => {
+        window.localStorage.setItem("tags", JSON.stringify(tags))
+    }, [tags])
+
     const findTag = (id: number) => {
         return tags.filter((tag) => tag.id === id)[0]
     }
@@ -23,7 +35,13 @@ const useTags = () => {
         const newTags = tags.filter((e) => e.id !== tag.id)
         setTags(newTags)
     }
-    return { tags, setTags, findTag, updateTag, deleteTag }
+    const addTag = () => {
+        const newTag = prompt("输入新标签🏷️")
+        if (newTag !== null && newTag !== "") {
+            setTags([...tags, { id: createId(), name: newTag }])
+        }
+    }
+    return { tags, setTags, findTag, updateTag, deleteTag, addTag }
 }
 
 export { useTags }

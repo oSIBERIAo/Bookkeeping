@@ -14,6 +14,7 @@ const Wrapper = styled.section`
             inset 0 5px 5px -5px rgba(0, 0, 0, 0.25);
     }
     .pad {
+        background-color: white;
         button {
             float: left;
             width: 25%;

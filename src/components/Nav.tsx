@@ -4,9 +4,17 @@ import React from "react"
 import { Icon } from "components/Icon"
 
 const NavWrapper = styled.nav`
-    background-color: white;
-    line-height: 24px;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    height: 5rem;
+    .navi {
+        background-color: white;
+        line-height: 24px;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+        position: fixed;
+        width: 100%;
+        height: 5rem;
+        bottom: 0;
+    }
     > ul {
         display: flex;
         padding: 5px 0 0 0;
@@ -38,7 +46,7 @@ const NavWrapper = styled.nav`
 const Nav = () => {
     return (
         <NavWrapper>
-            <ul>
+            <ul className="navi">
                 <li>
                     <NavLink to="/tags" activeClassName="selected">
                         <Icon name={"tag"} />

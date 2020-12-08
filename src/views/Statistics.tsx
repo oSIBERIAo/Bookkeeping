@@ -16,7 +16,6 @@ const Item = styled.div`
     background-color: white;
     padding: 16px 8px;
     border-bottom: 1px solid #666;
-    //margin-left: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -58,12 +57,12 @@ const Statistics = () => {
         result[key].push(r)
     })
 
+    // 根据日期分类  >  子项根据日期排序
     let arrayResult = Object.entries(result).sort((a, b) => {
         if (a[0] > b[0]) return -1
         if (a[0] < b[0]) return 1
         return 0
     })
-    // console.log("before > arrayResult", arrayResult)
     arrayResult.forEach((r) => {
         r[1].sort((a, b) => {
             if (a.createdTime > b.createdTime) return -1
@@ -71,7 +70,6 @@ const Statistics = () => {
             return 0
         })
     })
-    // console.log("arrayResult", arrayResult)
 
     return (
         <Layout>

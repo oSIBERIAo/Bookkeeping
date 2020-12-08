@@ -35,7 +35,6 @@ const CategorySection: React.FC<Props> = (props) => {
         "+": "收入",
     }
 
-    // const [category, setCategory] = useState("-")
     const category = props.value
     const setCategory = props.onChange
 

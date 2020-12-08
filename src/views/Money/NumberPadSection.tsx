@@ -18,6 +18,10 @@ const Wrapper = styled.section`
             float: left;
             width: 25%;
             height: 64px;
+            border-radius: 0;
+            border: 1px solid #e3e3e3;
+            outline: none;
+            user-select: none;
             &.ok {
                 float: right;
                 height: 128px;
@@ -68,7 +72,6 @@ type Props = {
 }
 
 const NumberPadSection: React.FC<Props> = (props) => {
-    // const [output, _setOutput] = useState("0")
     const output = props.value
     const _setOutput = props.onChange
 

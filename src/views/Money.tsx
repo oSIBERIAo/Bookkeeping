@@ -43,19 +43,9 @@ const Money = () => {
 
     return (
         <MyLayout>
-            {/*{selected.tagIds}*/}
-            {/*<hr />*/}
-            {/*{selected.note}*/}
-            {/*<hr />*/}
-            {/*{selected.category}*/}
-            {/*<hr />*/}
-            {/*{selected.amount}*/}
-            {/*<hr />*/}
-            {/*records:{JSON.stringify(records)}*/}
-            {/*<hr />*/}
             <TagsSection
                 value={selected.tagIds}
-                //解构赋值 {(tag) => onChang({ tag : tag })}
+                //解构赋值 {(tagIds) => onChang({ tagIds : tagIds })}
                 onChange={(tagIds) => onChang({ tagIds })}
             />
             <NoteSection

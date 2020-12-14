@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>ic/dark/36/add</title>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="ic/dark/36/add">
-            <circle id="Oval-Copy-3" stroke="#B2BAD4" stroke-width="2.5" opacity="0.35202753" cx="18" cy="18" r="16.75"></circle>
-            <line x1="18" y1="14" x2="18" y2="22" id="Line-4" stroke="#AFB7D1" stroke-width="2" stroke-linecap="square"></line>
-            <line x1="18" y1="14" x2="18" y2="22" id="Line-4" stroke="#AFB7D1" stroke-width="2" stroke-linecap="square" transform="translate(18.000000, 18.000000) rotate(-270.000000) translate(-18.000000, -18.000000) "></line>
+<svg width="45px" height="45px" viewBox="0 0 45 45" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>ic-add</title>
+    <g id="symbol" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Ui-Bars-/-Tab-Bars-/-Base-/-Light-" transform="translate(-185.000000, -7.000000)">
+            <g id="#3" transform="translate(164.000000, 5.000000)">
+                <g id="ic-add" transform="translate(21.000000, 2.000000)">
+                    <circle id="Oval" fill="#472FC8" cx="22.5" cy="22.5" r="22.5"></circle>
+                    <g id="Add" transform="translate(13.000000, 13.000000)" fill="#FFFFFF" stroke="#FFFFFF">
+                        <path d="M19.2105263,9.21052632 L10.7894737,9.21052632 L10.7894737,0.789473684 C10.7894737,0.353459408 10.4360143,0 10,0 C9.56398572,0 9.21052632,0.353459408 9.21052632,0.789473684 L9.21052632,9.21052632 L0.789473684,9.21052632 C0.353459408,9.21052632 0,9.56398572 0,10 C0,10.4360143 0.353459408,10.7894737 0.789473684,10.7894737 L9.21052632,10.7894737 L9.21052632,19.2105263 C9.21052632,19.6465406 9.56398572,20 10,20 C10.4360143,20 10.7894737,19.6465406 10.7894737,19.2105263 L10.7894737,10.7894737 L19.2105263,10.7894737 C19.6465406,10.7894737 20,10.4360143 20,10 C20,9.56398572 19.6465406,9.21052632 19.2105263,9.21052632 L19.2105263,9.21052632 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
         </g>
     </g>
 </svg>

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>ic/light/36/log_out</title>
-    <g id="ic/light/36/log_out" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Oval-Copy-3" opacity="0.34828404" stroke="#B2BAD4" stroke-width="2.5">
-            <circle cx="18" cy="18" r="16.75"></circle>
-        </g>
-        <g id="ic/light/24/card/inactive" transform="translate(6.000000, 6.000000)">
-            <polygon id="Path" points="0 0 24 0 24 24 0 24"></polygon>
-            <path d="M20,4 L4,4 C2.89,4 2.01,4.89 2.01,6 L2,18 C2,19.11 2.89,20 4,20 L20,20 C21.11,20 22,19.11 22,18 L22,6 C22,4.89 21.11,4 20,4 Z M20,18 L4,18 L4,12 L20,12 L20,18 Z M20,8 L4,8 L4,6 L20,6 L20,8 Z" id="Shape" fill="#AFB7D1" fill-rule="nonzero"></path>
+<svg width="27px" height="21px" viewBox="0 0 27 21" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>编组</title>
+    <g id="记账-💰" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="画板" transform="translate(-197.000000, -743.000000)" stroke="#0D0E56">
+            <g id="编组" transform="translate(199.000000, 745.000000)">
+                <path d="M7.81665383,0 L19,0 L19,0 C21.209139,0 23,1.790861 23,4 L23,13 C23,15.209139 21.209139,17 19,17 L7.81665383,17 C6.63210391,17 5.47405775,16.6493718 4.48845265,15.9923018 L1.33589941,13.8905996 C0.501303406,13.3342023 1.45646572e-15,12.3975083 0,11.3944487 L0,5.60555128 C-1.22839368e-16,4.60249171 0.501303406,3.66579773 1.33589941,3.10940039 L4.48845265,1.00769823 C5.47405775,0.350628165 6.63210391,1.99395513e-15 7.81665383,0 Z" id="矩形" stroke-width="3" stroke-linejoin="round"></path>
+                <circle id="椭圆形" stroke-width="2" cx="5.5" cy="8.5" r="1.5"></circle>
+            </g>
         </g>
     </g>
 </svg>

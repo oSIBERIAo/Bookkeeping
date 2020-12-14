@@ -5,12 +5,14 @@ import { useTags } from "../../hooks/useTags"
 const Wrapper = styled.section`
     background-color: #fff;
     padding: 12px 16px;
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
+    height: 30vh;
+    overflow: scroll;
     ol {
+        overflow: scroll;
         margin: 0 -12px;
         li {
             background-color: #d9d9d9;

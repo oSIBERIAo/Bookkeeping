@@ -15,17 +15,28 @@ const Wrapper = styled.section`
     }
     .pad {
         background-color: white;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        padding-top: 10px;
+        overflow: hidden;
         button {
             float: left;
             width: 25%;
             height: 64px;
             border-radius: 0;
-            border: 1px solid #e3e3e3;
+            border: none;
             outline: none;
             user-select: none;
+            background-color: white;
+            font-weight: bolder;
             &.ok {
                 float: right;
                 height: 128px;
+                padding: 10px;
+                border-radius: 20px;
+                background-color: #472fc8;
+                color: white;
+                border: 10px solid white;
             }
             &.zero {
                 width: 50%;

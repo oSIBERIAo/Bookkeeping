@@ -17,6 +17,7 @@ const defaultSelected = {
 const MyLayout = styled(Layout)`
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
 `
 
 const CategorySectionWrapper = styled.div`

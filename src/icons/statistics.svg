@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>ic/ light/36/notification</title>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="ic/-light/36/notification">
-            <circle id="Oval-Copy-3" stroke="#B2BAD4" stroke-width="2.5" opacity="0.34828404" cx="18" cy="18" r="16.75"></circle>
-            <g id="baseline-sort-24px" transform="translate(6.000000, 6.000000)">
-                <path d="M3,18 L9,18 L9,16 L3,16 L3,18 Z M3,6 L3,8 L21,8 L21,6 L3,6 Z M3,13 L15,13 L15,11 L3,11 L3,13 Z" id="Shape" fill="#AFB7D1" fill-rule="nonzero"></path>
-                <polygon id="Path" points="0 0 24 0 24 24 0 24"></polygon>
-            </g>
+<!--suppress ALL -->
+<svg width="18px" height="19px" viewBox="0 0 18 19" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>形状</title>
+    <g id="记账-💰" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="画板" transform="translate(-107.000000, -722.000000)" fill="#0D0E56">
+            <path d="M108.8,722 C107.804,722 107,722.795625 107,723.78125 L107,739.21875 C107,740.204375 107.804,741 108.8,741 C109.796,741 110.6,740.204375 110.6,739.21875 L110.6,723.78125 C110.6,722.795625 109.796,722 108.8,722 Z M123.2,733.875 C122.204,733.875 121.4,734.670625 121.4,735.65625 L121.4,739.21875 C121.4,740.204375 122.204,741 123.2,741 C124.196,741 125,740.204375 125,739.21875 L125,735.65625 C125,734.670625 124.196,733.875 123.2,733.875 Z M116,727.9375 C115.004,727.9375 114.2,728.733125 114.2,729.71875 L114.2,739.21875 C114.2,740.204375 115.004,741 116,741 C116.996,741 117.8,740.204375 117.8,739.21875 L117.8,729.71875 C117.8,728.733125 116.996,727.9375 116,727.9375 Z" id="形状"></path>
         </g>
     </g>
 </svg>

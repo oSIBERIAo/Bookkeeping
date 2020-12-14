@@ -18,10 +18,21 @@ const MyLayout = styled(Layout)`
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    position: fixed;
+    bottom: 5.5rem;
+    width: 100vw;
+    background-color: #f1f4ff;
+    //height: 100vh;
 `
 
-const CategorySectionWrapper = styled.div`
-    background-color: #c4c4c4;
+const CategoryNoteSectionWrapper = styled.div`
+    margin: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    section {
+        background-color: white;
+    }
+    box-shadow: 0 3px 14px 0 rgba(233, 231, 241, 0.5);
 `
 
 const Money = () => {
@@ -49,16 +60,16 @@ const Money = () => {
                 //解构赋值 {(tagIds) => onChang({ tagIds : tagIds })}
                 onChange={(tagIds) => onChang({ tagIds })}
             />
-            <NoteSection
-                value={selected.note}
-                onChange={(note) => onChang({ note })}
-            />
-            <CategorySectionWrapper>
+            <CategoryNoteSectionWrapper>
+                <NoteSection
+                    value={selected.note}
+                    onChange={(note) => onChang({ note })}
+                />
                 <CategorySection
                     value={selected.category}
                     onChange={(category) => onChang({ category })}
                 />
-            </CategorySectionWrapper>
+            </CategoryNoteSectionWrapper>
             <NumberPadSection
                 value={selected.amount}
                 onChange={(amount) => onChang({ amount })}

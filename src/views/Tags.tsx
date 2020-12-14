@@ -22,6 +22,20 @@ const TagList = styled.ol`
             width: 1rem;
         }
     }
+    button {
+        background-color: white;
+        display: inline-block;
+        border-radius: 18px;
+        padding: 3px 10px;
+        font-size: 20px;
+        margin: 5px 12px 2px;
+        border: 4px solid white;
+        box-shadow: 0 3px 14px 0 rgba(233, 231, 241, 0.5);
+        .icon {
+            position: relative;
+            top: 4px;
+        }
+    }
 `
 
 const Tags = () => {
@@ -33,7 +47,10 @@ const Tags = () => {
                 {tags.map((tag) => (
                     <Link to={"/tags/" + tag.id} key={tag.id}>
                         <li>
-                            <span className="oneLine">{tag.name}</span>
+                            <span className="oneLine">
+                                {tag.name.split("@")[0]}&nbsp;&nbsp;&nbsp;
+                                {tag.name.split("@")[1]}
+                            </span>
                             <Icon name="right" />
                         </li>
                     </Link>
@@ -41,7 +58,9 @@ const Tags = () => {
             </TagList>
             <Center>
                 <Space />
-                <Button onClick={addTag}>新增标签</Button>
+                <Button onClick={addTag}>
+                    <Icon name={"money"} />
+                </Button>
             </Center>
         </Layout>
     )

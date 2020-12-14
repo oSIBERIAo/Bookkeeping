@@ -1,40 +1,59 @@
 import styled from "styled-components"
 import React from "react"
 import { useTags } from "../../hooks/useTags"
-
+import { Icon } from "components/Icon"
 const Wrapper = styled.section`
-    background-color: #fff;
-    padding: 12px 16px;
+    //background-color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
     height: 30vh;
     overflow: scroll;
+    @media (max-height: 667px) {
+        height: 20vh;
+    }
     ol {
+        padding: 12px 16px;
         overflow: scroll;
         margin: 0 -12px;
         li {
-            background-color: #d9d9d9;
+            background-color: white;
             display: inline-block;
             border-radius: 18px;
-            padding: 3px 16px;
-            font-size: 14px;
+            padding: 3px 10px;
+            font-size: 20px;
             margin: 4px 12px;
+            border: 4px solid white;
+            box-shadow: 0 3px 14px 0 rgba(233, 231, 241, 0.5);
             &.selected {
-                background-color: #6b707c;
-                color: white;
+                border: 4px solid #472fc8;
+            }
+        }
+        button {
+            background-color: white;
+            display: inline-block;
+            border-radius: 18px;
+            padding: 3px 10px;
+            font-size: 20px;
+            margin: 5px 12px 2px;
+            border: 4px solid white;
+            box-shadow: 0 3px 14px 0 rgba(233, 231, 241, 0.5);
+            .icon {
+                position: relative;
+                top: 4px;
             }
         }
     }
-    button {
-        background: none;
-        border: none;
-        padding: 2px 4px;
-        border-bottom: 1px solid #666;
-        margin-top: 8px;
-        color: #666;
-    }
+    //input {
+    //    background: white;
+    //    border: none;
+    //    padding: 10px 10px;
+    //    //border-bottom: 1px solid #666;
+    //    border-radius: 10px;
+    //    margin-top: 8px;
+    //    color: #666;
+    //}
 `
 
 type Props = {
@@ -71,11 +90,13 @@ const TagsSection: React.FC<Props> = (props) => {
                         key={tag.id}
                         className={ifSelected(tag.id)}
                     >
-                        {tag.name}
+                        {tag.name.split("@")[0]}
                     </li>
                 ))}
+                <button onClick={addTag}>
+                    <Icon name={"money"} />
+                </button>
             </ol>
-            <button onClick={addTag}>新增标签</button>
         </Wrapper>
     )
 }

@@ -3,10 +3,10 @@ import { createId } from "../lib/createId"
 import { useUpdate } from "./useUpdate"
 
 const defaultTags = [
-    { id: createId(), name: "衣" },
-    { id: createId(), name: "食" },
-    { id: createId(), name: "住" },
-    { id: createId(), name: "行" },
+    { id: createId(), name: "🍕" },
+    { id: createId(), name: "💊" },
+    { id: createId(), name: "🚘" },
+    { id: createId(), name: "👚" },
 ]
 
 const useTags = () => {

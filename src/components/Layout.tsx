@@ -3,15 +3,14 @@ import { Nav } from "./Nav"
 import styled from "styled-components"
 
 const Wrapper = styled.div`
-    //border: 1px solid palevioletred;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #eeeeee;
+    background-color: #f1f4ff;
 `
 const Main = styled.div`
     flex-grow: 1;
     overflow: auto;
+    min-height: calc(100vh - 5.5rem);
 `
 
 type Props = {

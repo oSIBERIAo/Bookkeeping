@@ -8,8 +8,9 @@ const NavWrapper = styled.nav`
     height: 5.5rem;
     .navi {
         background-color: white;
+        backdrop-filter: blur(5px);
         line-height: 24px;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
         position: fixed;
         width: 100%;
         height: 5.5rem;
@@ -60,7 +61,7 @@ const NavWrapper = styled.nav`
 
 const Nav = () => {
     return (
-        <NavWrapper>
+        <NavWrapper className="clearfix">
             <ul className="navi">
                 <li>
                     <NavLink to="/tags" activeClassName="selected">

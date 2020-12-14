@@ -8,6 +8,7 @@ import dayjs from "dayjs"
 
 const CategoryWrapper = styled.div`
     background-color: white;
+    margin-bottom: 10px;
 `
 const Header = styled.h4`
     padding: 4px 16px;
@@ -15,19 +16,29 @@ const Header = styled.h4`
 const Item = styled.div`
     background-color: white;
     padding: 16px 8px;
-    border-bottom: 1px solid #666;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    &:before {
+        position: absolute;
+        content: "";
+        display: block;
+        bottom: 0;
+        height: 1px;
+        width: 90%;
+        left: 5%;
+        background-color: #dad9e7;
+    }
     > .tags {
         padding-right: 20px;
         > span {
-            background-color: #d9d9d9;
+            background-color: #f1f4ff;
             display: inline-block;
             border-radius: 18px;
-            padding: 3px 6px;
-            font-size: 14px;
-            margin: 0 2px;
+            padding: 2px 6px 3px;
+            font-size: 20px;
+            margin: 0 4px 0 8px;
             &.selected {
                 background-color: #6b707c;
                 color: white;
@@ -38,7 +49,7 @@ const Item = styled.div`
         margin-right: auto;
     }
     > .amount {
-        margin-left: auto;
+        margin-right: 10px;
     }
 `
 
@@ -91,7 +102,7 @@ const Statistics = () => {
                                     <div className="tags">
                                         {e.tagIds.map((tagId) => (
                                             <span key={tagId}>
-                                                {getName(tagId)}
+                                                {getName(tagId).split("@")[0]}
                                             </span>
                                         ))}
                                     </div>

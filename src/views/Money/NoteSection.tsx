@@ -4,8 +4,18 @@ import { Input } from "../../components/Input"
 
 const Wrapper = styled.section`
     background-color: #f5f5f5;
-    padding: 0 16px;
+    padding: 4px 16px;
     font-size: 16px;
+    span {
+        font-size: 10px;
+    }
+    input {
+        outline: none;
+    }
+    input::placeholder {
+        font-size: 10px;
+        color: #c4c4c4;
+    }
 `
 
 type Props = {

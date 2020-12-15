@@ -3,14 +3,16 @@ import { createId } from "../lib/createId"
 import { useUpdate } from "./useUpdate"
 
 const defaultTags = [
-    { id: createId(), name: "🍕" },
-    { id: createId(), name: "💊" },
-    { id: createId(), name: "🚘" },
-    { id: createId(), name: "👚" },
+    { id: createId(), icon: "🍕", name: "吃饭", category: "-" },
+    { id: createId(), icon: "💻", name: "电子消费", category: "-" },
+    { id: createId(), icon: "🚘", name: "出行", category: "-" },
+    { id: createId(), icon: "👚", name: "购物", category: "-" },
 ]
 
+type Tag = { id: number; icon?: string; name: string; category?: string }[]
+
 const useTags = () => {
-    const [tags, setTags] = useState<{ id: number; name: string }[]>([])
+    const [tags, setTags] = useState<Tag>([])
     useEffect(() => {
         // console.log("after mount")
         let t = JSON.parse(window.localStorage.getItem("tags") || "[]")
@@ -35,17 +37,36 @@ const useTags = () => {
         const newTags = tags.filter((e) => e.id !== tag.id)
         setTags(newTags)
     }
-    const addTag = () => {
-        const newTag = prompt("输入新标签🏷️")
-        if (newTag !== null && newTag !== "") {
-            setTags([...tags, { id: createId(), name: newTag }])
+    const addTag = (newTag: {
+        name: string
+        category?: string
+        icon?: string
+    }) => {
+        if (newTag !== null && newTag.name !== "") {
+            setTags([
+                ...tags,
+                {
+                    id: createId(),
+                    name: newTag.name,
+                    icon: newTag.icon,
+                    category: newTag.category,
+                },
+            ])
         }
     }
     const getName = (id: number) => {
         const tag = tags.filter((t) => t.id === id)[0]
-        return tag ? tag.name : ""
+        return tag ? tag.icon : ""
     }
-    return { tags, setTags, findTag, updateTag, deleteTag, addTag, getName }
+    return {
+        tags,
+        setTags,
+        findTag,
+        updateTag,
+        deleteTag,
+        getName,
+        addTag,
+    }
 }
 
 export { useTags }

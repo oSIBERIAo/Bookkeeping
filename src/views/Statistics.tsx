@@ -102,7 +102,7 @@ const Statistics = () => {
                                     <div className="tags">
                                         {e.tagIds.map((tagId) => (
                                             <span key={tagId}>
-                                                {getName(tagId).split("@")[0]}
+                                                {getName(tagId)}
                                             </span>
                                         ))}
                                     </div>

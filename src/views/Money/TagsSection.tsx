@@ -2,6 +2,8 @@ import styled from "styled-components"
 import React from "react"
 import { useTags } from "../../hooks/useTags"
 import { Icon } from "components/Icon"
+import { Link } from "react-router-dom"
+
 const Wrapper = styled.section`
     //background-color: #fff;
     display: flex;
@@ -45,15 +47,6 @@ const Wrapper = styled.section`
             }
         }
     }
-    //input {
-    //    background: white;
-    //    border: none;
-    //    padding: 10px 10px;
-    //    //border-bottom: 1px solid #666;
-    //    border-radius: 10px;
-    //    margin-top: 8px;
-    //    color: #666;
-    //}
 `
 
 type Props = {
@@ -62,7 +55,7 @@ type Props = {
 }
 
 const TagsSection: React.FC<Props> = (props) => {
-    const { tags, addTag } = useTags()
+    const { tags } = useTags()
 
     const selectedTagIds = props.value
     const setSelectedTags = props.onChange
@@ -90,11 +83,13 @@ const TagsSection: React.FC<Props> = (props) => {
                         key={tag.id}
                         className={ifSelected(tag.id)}
                     >
-                        {tag.name.split("@")[0]}
+                        {tag.icon}
                     </li>
                 ))}
-                <button onClick={addTag}>
-                    <Icon name={"money"} />
+                <button>
+                    <Link to={"/addtag/"}>
+                        <Icon name={"money"} />
+                    </Link>
                 </button>
             </ol>
         </Wrapper>

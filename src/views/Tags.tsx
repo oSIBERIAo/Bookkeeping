@@ -4,7 +4,6 @@ import styled from "styled-components"
 import { Icon } from "../components/Icon"
 import { useTags } from "../hooks/useTags"
 import { Link } from "react-router-dom"
-import { Button } from "../components/Button"
 import { Center } from "../components/Center"
 import { Space } from "../components/Space"
 
@@ -37,9 +36,27 @@ const TagList = styled.ol`
         }
     }
 `
-
+const MyCenter = styled(Center)`
+    font-size: 30px;
+    a {
+        background-color: white;
+        padding: 5px 12px;
+        border-radius: 40px;
+        position: relative;
+        box-shadow: 0 3px 14px 0 rgba(233, 231, 241, 0.5);
+    }
+    a:after {
+        content: "+";
+        color: white;
+        font-size: 20px;
+        position: absolute;
+        top: 48%;
+        left: 54%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+`
 const Tags = () => {
-    const { tags, addTag } = useTags()
+    const { tags } = useTags()
 
     return (
         <Layout>
@@ -48,20 +65,18 @@ const Tags = () => {
                     <Link to={"/tags/" + tag.id} key={tag.id}>
                         <li>
                             <span className="oneLine">
-                                {tag.name.split("@")[0]}&nbsp;&nbsp;&nbsp;
-                                {tag.name.split("@")[1]}
+                                {tag.icon}&nbsp;&nbsp;&nbsp;
+                                {tag.name}
                             </span>
                             <Icon name="right" />
                         </li>
                     </Link>
                 ))}
             </TagList>
-            <Center>
+            <MyCenter>
                 <Space />
-                <Button onClick={addTag}>
-                    <Icon name={"money"} />
-                </Button>
-            </Center>
+                <Link to={"/addtag/"}>🏷️</Link>
+            </MyCenter>
         </Layout>
     )
 }

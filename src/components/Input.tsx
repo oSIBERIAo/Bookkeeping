@@ -25,7 +25,7 @@ type Props = {
 const Input: React.FC<Props> = (props) => {
     const { children, label, ...rest } = props
     return (
-        <Label htmlFor="">
+        <Label htmlFor="" className="clearfix">
             <span>{label}</span>
             <input {...rest} />
         </Label>

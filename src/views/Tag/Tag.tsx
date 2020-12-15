@@ -1,13 +1,13 @@
 import React from "react"
-import { Layout } from "../components/Layout"
-import { useTags } from "../hooks/useTags"
+import { Layout } from "../../components/Layout"
+import { useTags } from "../../hooks/useTags"
 import { useParams } from "react-router-dom"
-import { Icon } from "../components/Icon"
-import { Button } from "../components/Button"
+import { Icon } from "../../components/Icon"
+import { Button } from "../../components/Button"
 import styled from "styled-components"
-import { Input } from "../components/Input"
-import { Center } from "../components/Center"
-import { Space } from "../components/Space"
+import { Input } from "../../components/Input"
+import { Center } from "../../components/Center"
+import { Space } from "../../components/Space"
 
 const Topbar = styled.header`
     display: flex;

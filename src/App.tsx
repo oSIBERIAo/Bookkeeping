@@ -12,7 +12,8 @@ import "./App.css"
 
 import { Money } from "./views/Money"
 import { Tags } from "./views/Tags"
-import { Tag } from "./views/Tag"
+import { Tag } from "./views/Tag/Tag"
+import { AddTag } from "./views/Tag/AddTag"
 import { Statistics } from "./views/Statistics"
 
 function App() {
@@ -24,6 +25,9 @@ function App() {
                 </Route>
                 <Route exact path="/tags/:id">
                     <Tag />
+                </Route>
+                <Route exact path="/addtag">
+                    <AddTag />
                 </Route>
                 <Route exact path="/money">
                     <Money />

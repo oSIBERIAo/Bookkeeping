@@ -78,7 +78,7 @@ const Tags = () => {
             </CategoryWrapper>
             <TagList>
                 {selectedTags.map((tag) => (
-                    <Link to={"/tags/" + tag.id} key={tag.id}>
+                    <Link to={"/editTags/" + tag.id} key={tag.id}>
                         <li>
                             <span className="oneLine">
                                 {tag.icon}&nbsp;&nbsp;&nbsp;
@@ -91,7 +91,7 @@ const Tags = () => {
             </TagList>
             <MyCenter>
                 <Space />
-                <Link to={"/addtag/"}>🏷️</Link>
+                <Link to={"/addTag/"}>🏷️</Link>
             </MyCenter>
         </Layout>
     )

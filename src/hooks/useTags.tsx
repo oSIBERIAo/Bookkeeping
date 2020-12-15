@@ -3,18 +3,20 @@ import { createId } from "../lib/createId"
 import { useUpdate } from "./useUpdate"
 
 const defaultTags = [
+    { id: createId(), icon: "💰", name: "日常支出", category: "-" },
     { id: createId(), icon: "🍕", name: "吃饭", category: "-" },
     { id: createId(), icon: "💻", name: "电子消费", category: "-" },
     { id: createId(), icon: "🚘", name: "出行", category: "-" },
     { id: createId(), icon: "👚", name: "购物", category: "-" },
 
+    { id: createId(), icon: "💸", name: "日常收入", category: "+" },
     { id: createId(), icon: "🧮", name: "理财", category: "+" },
     { id: createId(), icon: "📈", name: "股票", category: "+" },
     { id: createId(), icon: "🔖", name: "购物", category: "+" },
     { id: createId(), icon: "🐟", name: "闲置出售", category: "+" },
 ]
 
-type Tag = { id: number; icon?: string; name: string; category?: string }[]
+type Tag = { id: number; icon: string; name: string; category: string }[]
 
 const useTags = () => {
     const [tags, setTags] = useState<Tag>([])
@@ -34,7 +36,12 @@ const useTags = () => {
     const findTag = (id: number) => {
         return tags.filter((tag) => tag.id === id)[0]
     }
-    const updateTag = (tag: { id: number; name: string }) => {
+    const updateTag = (tag: {
+        id: number
+        name: string
+        icon: string
+        category: string
+    }) => {
         const newTags = tags.map((e) => (e.id === tag.id ? { ...tag } : e))
         setTags(newTags)
     }
@@ -44,8 +51,8 @@ const useTags = () => {
     }
     const addTag = (newTag: {
         name: string
-        category?: string
-        icon?: string
+        category: string
+        icon: string
     }) => {
         if (newTag !== null && newTag.name !== "") {
             setTags([

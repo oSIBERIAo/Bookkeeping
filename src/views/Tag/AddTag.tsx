@@ -66,7 +66,7 @@ const InputWrapper = styled.div`
 const AddTag: React.FC = () => {
     const { addTag } = useTags()
 
-    type Tag = { name: string; icon?: string; category?: string }
+    type Tag = { name: string; icon: string; category: string }
     const [newTag, setNewTag] = useState<Tag>({
         icon: "",
         name: "",
@@ -133,7 +133,7 @@ const AddTag: React.FC = () => {
                 <Button
                     onClick={() => {
                         addTag(newTag)
-                        console.log("11", newTag)
+                        onClickBack()
                     }}
                 >
                     添加标签
@@ -149,8 +149,7 @@ const AddTag: React.FC = () => {
                 <span>编辑标签</span>
                 <span />
             </Topbar>
-            {/*{tag ? tagContent(tag) : <Center>"Tag 不存在"</Center>}*/}
-            {tagContent()}
+            {newTag ? tagContent() : <Center>"Tag 不存在"</Center>}
         </Layout>
     )
 }

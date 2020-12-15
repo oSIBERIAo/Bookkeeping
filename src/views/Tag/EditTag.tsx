@@ -1,4 +1,4 @@
-import React from "react"
+import React, { ChangeEvent } from "react"
 import { Layout } from "../../components/Layout"
 import { useTags } from "../../hooks/useTags"
 import { useParams } from "react-router-dom"
@@ -23,7 +23,18 @@ const InputWrapper = styled.div`
     margin-top: 8px;
 `
 
-const Tag: React.FC = () => {
+const MyCenter = styled(Center)`
+    padding-top: 40px;
+    display: flex;
+    flex-direction: row;
+    Button {
+        font-size: 25px;
+        padding: 5px 12px;
+        border-radius: 40px;
+    }
+`
+
+const EditTag: React.FC = () => {
     const { findTag, updateTag, deleteTag } = useTags()
     let { id } = useParams<{ id: string }>()
     const tag = findTag(parseInt(id))
@@ -32,29 +43,50 @@ const Tag: React.FC = () => {
         window.history.back()
     }
 
-    const tagContent = (tag: { id: number; name: string }) => (
+    type Tag = {
+        icon: string
+        id: number
+        name: string
+        category: string
+    }
+
+    const tagContent = (tag: Tag) => (
         <div>
             <InputWrapper>
                 <Input
                     type="text"
-                    label="标签名"
-                    placeholder="标签名"
-                    value={tag.name}
-                    onChange={(e) => {
-                        updateTag({ id: tag.id, name: e.target.value })
+                    label="ICON:"
+                    placeholder="请输入 emoji 表情 如：😊"
+                    value={tag.icon}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                        updateTag({ ...tag, icon: e.target.value })
                     }}
                 />
             </InputWrapper>
-            <Center>
+            <InputWrapper>
+                <Input
+                    type="text"
+                    label="标签名:"
+                    placeholder="请输入标签名"
+                    value={tag.name}
+                    onChange={(e) => {
+                        updateTag({ ...tag, name: e.target.value })
+                    }}
+                />
+            </InputWrapper>
+            <MyCenter>
                 <Space />
                 <Button
                     onClick={() => {
                         deleteTag(tag)
+                        onClickBack()
                     }}
                 >
-                    删除标签
+                    🗑
                 </Button>
-            </Center>
+                <br />
+                <Button onClick={onClickBack}>💾</Button>
+            </MyCenter>
         </div>
     )
 
@@ -70,4 +102,4 @@ const Tag: React.FC = () => {
     )
 }
 
-export { Tag }
+export { EditTag }

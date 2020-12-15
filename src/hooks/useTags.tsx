@@ -7,6 +7,11 @@ const defaultTags = [
     { id: createId(), icon: "💻", name: "电子消费", category: "-" },
     { id: createId(), icon: "🚘", name: "出行", category: "-" },
     { id: createId(), icon: "👚", name: "购物", category: "-" },
+
+    { id: createId(), icon: "🧮", name: "理财", category: "+" },
+    { id: createId(), icon: "📈", name: "股票", category: "+" },
+    { id: createId(), icon: "🔖", name: "购物", category: "+" },
+    { id: createId(), icon: "🐟", name: "闲置出售", category: "+" },
 ]
 
 type Tag = { id: number; icon?: string; name: string; category?: string }[]

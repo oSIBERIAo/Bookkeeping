@@ -51,11 +51,14 @@ const Wrapper = styled.section`
 
 type Props = {
     value: number[]
+    category: string
     onChange: (selected: number[]) => void
 }
 
 const TagsSection: React.FC<Props> = (props) => {
     const { tags } = useTags()
+
+    const selectedTags = tags.filter((t) => t.category === props.category)
 
     const selectedTagIds = props.value
     const setSelectedTags = props.onChange
@@ -75,7 +78,7 @@ const TagsSection: React.FC<Props> = (props) => {
     return (
         <Wrapper>
             <ol>
-                {tags.map((tag) => (
+                {selectedTags.map((tag) => (
                     <li
                         onClick={() => {
                             onToggleTags(tag.id)

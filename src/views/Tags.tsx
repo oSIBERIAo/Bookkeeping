@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Layout } from "../components/Layout"
 import styled from "styled-components"
 import { Icon } from "../components/Icon"
@@ -6,6 +6,7 @@ import { useTags } from "../hooks/useTags"
 import { Link } from "react-router-dom"
 import { Center } from "../components/Center"
 import { Space } from "../components/Space"
+import { CategorySection } from "./Money/CategorySection"
 
 const TagList = styled.ol`
     background-color: white;
@@ -55,13 +56,28 @@ const MyCenter = styled(Center)`
         transform: translateX(-50%) translateY(-50%);
     }
 `
+const CategoryWrapper = styled.div`
+    background-color: white;
+    margin-bottom: 10px;
+`
 const Tags = () => {
     const { tags } = useTags()
+    const [category, setCategory] = useState<string>("-")
+
+    const selectedTags = tags.filter((t) => t.category === category)
 
     return (
         <Layout>
+            <CategoryWrapper>
+                <CategorySection
+                    value={category}
+                    onChange={(value) => {
+                        setCategory(value)
+                    }}
+                />
+            </CategoryWrapper>
             <TagList>
-                {tags.map((tag) => (
+                {selectedTags.map((tag) => (
                     <Link to={"/tags/" + tag.id} key={tag.id}>
                         <li>
                             <span className="oneLine">

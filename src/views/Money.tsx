@@ -57,6 +57,7 @@ const Money = () => {
         <MyLayout>
             <TagsSection
                 value={selected.tagIds}
+                category={selected.category}
                 //解构赋值 {(tagIds) => onChang({ tagIds : tagIds })}
                 onChange={(tagIds) => onChang({ tagIds })}
             />

@@ -64,6 +64,12 @@ const Nav = () => {
         <NavWrapper className="clearfix">
             <ul className="navi">
                 <li>
+                    <NavLink to="/detail" activeClassName="selected">
+                        <Icon name={"detail"} />
+                        明细
+                    </NavLink>
+                </li>
+                <li>
                     <NavLink to="/tags" activeClassName="selected">
                         <Icon name={"tag"} />
                         标签
@@ -83,6 +89,12 @@ const Nav = () => {
                     <NavLink to="/statistics" activeClassName="selected">
                         <Icon name={"statistics"} />
                         统计
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/tips" activeClassName="selected">
+                        <Icon name={"tips"} />
+                        理财
                     </NavLink>
                 </li>
             </ul>

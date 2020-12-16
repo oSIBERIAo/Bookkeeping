@@ -53,7 +53,7 @@ const Item = styled.div`
     }
 `
 
-const Statistics = () => {
+const Detail = () => {
     const [category, setCategory] = useState<string>("-")
     const { records } = useRecords()
     const { getName } = useTags()
@@ -119,4 +119,4 @@ const Statistics = () => {
         </Layout>
     )
 }
-export { Statistics }
+export { Detail }

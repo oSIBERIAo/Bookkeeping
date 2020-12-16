@@ -14,7 +14,7 @@ import { Money } from "./views/Money"
 import { Tags } from "./views/Tags"
 import { EditTag } from "./views/Tag/EditTag"
 import { AddTag } from "./views/Tag/AddTag"
-import { Statistics } from "./views/Statistics"
+import { Detail } from "./views/Detail"
 
 function App() {
     return (
@@ -32,8 +32,8 @@ function App() {
                 <Route exact path="/money">
                     <Money />
                 </Route>
-                <Route exact path="/statistics">
-                    <Statistics />
+                <Route exact path="/detail">
+                    <Detail />
                 </Route>
                 <Redirect exact from="/" to="Money" />
                 <Route path="/*">

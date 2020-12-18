@@ -8,7 +8,7 @@ type Props = {
 }
 
 const Wrapper = styled.div`
-    padding: 20px;
+    //padding: 20px;
     > div {
         //border: 1px solid red;
         background-color: white;

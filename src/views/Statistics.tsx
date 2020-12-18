@@ -5,10 +5,37 @@ import styled from "styled-components"
 import { useRecords } from "../hooks/useRecords"
 
 import { ReactEcharts } from "../components/ReactEcharts"
+import { Space } from "../components/Space"
 
-const CategoryWrapper = styled.div`
-    background-color: white;
-    margin-bottom: 10px;
+const Wrapper = styled.div`
+    > div {
+        background-color: white;
+        width: 90%;
+        margin: auto;
+        border-radius: 10px;
+        overflow: hidden;
+        > section {
+            padding: 24px 0 10px 0;
+            width: 90%;
+            margin: auto;
+            > ul {
+                border-radius: 40px;
+                > li {
+                    line-height: 20px;
+                    font-size: 14px;
+                    padding: 10px;
+                    border-radius: 40px;
+                    color: #0d0e56;
+                    &.selected {
+                        font-size: 18px;
+                        border-radius: 40px;
+                        color: white;
+                        background-color: #472fc8;
+                    }
+                }
+            }
+        }
+    }
 `
 const Statistics = () => {
     const [category, setCategory] = useState<string>("-")
@@ -32,18 +59,14 @@ const Statistics = () => {
             text: "收支统计",
             padding: 20, //标题内边距,
             left: "left", //主副标题的水平位置
-            textStyle: {
-                color: "#0D0E56", //这里用参数代替了
-            },
+            color: "#0D0E56",
         },
         tooltip: {},
         xAxis: {
             data: xAxisDate,
             axisLabel: {
                 show: true,
-                textStyle: {
-                    color: "#B9BACE", //这里用参数代替了
-                },
+                color: "#B9BACE",
             },
             axisLine: {
                 show: false,
@@ -60,9 +83,7 @@ const Statistics = () => {
         yAxis: {
             axisLabel: {
                 show: true,
-                textStyle: {
-                    color: "#B9BACE", //这里用参数代替了
-                },
+                color: "#B9BACE", //这里用参数代替了
             },
         },
         series: [
@@ -72,13 +93,8 @@ const Statistics = () => {
                 data: seriesData,
                 barWidth: 12,
                 itemStyle: {
-                    emphasis: {
-                        barBorderRadius: [100, 100, 0, 0],
-                    },
-                    normal: {
-                        barBorderRadius: [100, 100, 0, 0],
-                        color: "#472FC8",
-                    },
+                    borderRadius: [100, 100, 0, 0], // 统一设置四个角的圆角大小
+                    color: "#472FC8",
                 },
             },
         ],
@@ -91,15 +107,18 @@ const Statistics = () => {
 
     return (
         <Layout>
-            <CategoryWrapper>
-                <CategorySection
-                    value={category}
-                    onChange={(value) => {
-                        setCategory(value)
-                    }}
-                />
-            </CategoryWrapper>
-            <ReactEcharts option={option}></ReactEcharts>
+            <Space />
+            <Wrapper>
+                <div>
+                    <CategorySection
+                        value={category}
+                        onChange={(value) => {
+                            setCategory(value)
+                        }}
+                    />
+                    <ReactEcharts option={option}></ReactEcharts>
+                </div>
+            </Wrapper>
         </Layout>
     )
 }

@@ -73,9 +73,9 @@ const generateOutput = (text: any, output: string | string[]) => {
             } else {
                 return output + text
             }
-        case "删除":
+        case "⌫":
             return output.slice(0, -1)
-        case "清空":
+        case "AC":
             return "0"
         case "OK":
             break

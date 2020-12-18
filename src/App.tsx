@@ -15,6 +15,7 @@ import { Tags } from "./views/Tags"
 import { EditTag } from "./views/Tag/EditTag"
 import { AddTag } from "./views/Tag/AddTag"
 import { Detail } from "./views/Detail"
+import { Statistics } from "./views/Statistics"
 
 function App() {
     return (
@@ -34,6 +35,9 @@ function App() {
                 </Route>
                 <Route exact path="/detail">
                     <Detail />
+                </Route>
+                <Route exact path="/statistics">
+                    <Statistics />
                 </Route>
                 <Redirect exact from="/" to="Money" />
                 <Route path="/*">

@@ -27,7 +27,7 @@ const Item = styled.div`
         height: 1px;
         width: 90%;
         left: 5%;
-        background-color: #dad9e7;
+        background-color: #f1f4ff;
     }
     > .tags {
         padding-right: 20px;
@@ -54,7 +54,7 @@ const Item = styled.div`
 
 const Detail = () => {
     const [category, setCategory] = useState<string>("-")
-    const { getName } = useTags()
+    const { getIcon, getName } = useTags()
 
     const { selectedRecordsByCategory } = useRecords()
     const arrayResult = selectedRecordsByCategory(category)
@@ -79,12 +79,16 @@ const Detail = () => {
                                     <div className="tags">
                                         {e.tagIds.map((tagId) => (
                                             <span key={tagId}>
-                                                {getName(tagId)}
+                                                {getIcon(tagId)}
                                             </span>
                                         ))}
                                     </div>
-                                    {e.note && (
+                                    {e.note ? (
                                         <div className="note">{e.note}</div>
+                                    ) : (
+                                        <div className="note">
+                                            {getName(e.tagIds[0])}
+                                        </div>
                                     )}
                                     <div className="amount">¥ {e.amount}</div>
                                 </Item>

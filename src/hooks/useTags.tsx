@@ -66,9 +66,13 @@ const useTags = () => {
             ])
         }
     }
-    const getName = (id: number) => {
+    const getIcon = (id: number) => {
         const tag = tags.filter((t) => t.id === id)[0]
         return tag ? tag.icon : ""
+    }
+    const getName = (id: number) => {
+        const tag = tags.filter((t) => t.id === id)[0]
+        return tag ? tag.name : ""
     }
     return {
         tags,
@@ -76,6 +80,7 @@ const useTags = () => {
         findTag,
         updateTag,
         deleteTag,
+        getIcon,
         getName,
         addTag,
     }

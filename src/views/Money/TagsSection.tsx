@@ -18,7 +18,6 @@ const Wrapper = styled.section`
     ol {
         padding: 12px 16px;
         overflow: scroll;
-        margin: 0 -12px;
         li {
             background-color: white;
             display: inline-block;

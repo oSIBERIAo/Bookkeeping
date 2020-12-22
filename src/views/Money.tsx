@@ -6,12 +6,15 @@ import { CategorySection } from "./Money/CategorySection"
 import { NoteSection } from "./Money/NoteSection"
 import { NumberPadSection } from "./Money/NumberPadSection"
 import { useRecords } from "../hooks/useRecords"
+import dayjs from "dayjs"
+import { DateSection } from "./Money/DateSection"
 
 const defaultSelected = {
     tagIds: [] as number[],
     note: "",
     category: "-",
     amount: "0",
+    day: dayjs(new Date().toISOString()).format("YYYY-MM-DD"),
 }
 
 const MyLayout = styled(Layout)`
@@ -31,6 +34,11 @@ const CategoryNoteSectionWrapper = styled.div`
     overflow: hidden;
     section {
         background-color: white;
+    }
+    > div {
+        display: flex;
+        justify-content: space-between;
+        background: white;
     }
     box-shadow: 0 3px 14px 0 rgba(233, 231, 241, 0.5);
 `
@@ -61,16 +69,24 @@ const Money = () => {
                 //解构赋值 {(tagIds) => onChang({ tagIds : tagIds })}
                 onChange={(tagIds) => onChang({ tagIds })}
             />
+
             <CategoryNoteSectionWrapper>
-                <NoteSection
-                    value={selected.note}
-                    onChange={(note) => onChang({ note })}
-                />
+                <div>
+                    <NoteSection
+                        value={selected.note}
+                        onChange={(note) => onChang({ note })}
+                    />
+                    <DateSection
+                        day={selected.day}
+                        onChange={(day) => onChang({ day })}
+                    ></DateSection>
+                </div>
                 <CategorySection
                     value={selected.category}
                     onChange={(category) => onChang({ category })}
                 />
             </CategoryNoteSectionWrapper>
+
             <NumberPadSection
                 value={selected.amount}
                 onChange={(amount) => onChang({ amount })}

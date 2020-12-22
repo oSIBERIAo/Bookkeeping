@@ -44,7 +44,9 @@ const Statistics = () => {
     const arrayResult = selectedRecordsByCategory(category)
 
     const xAxisDate = arrayResult.map((e) => {
-        return e[0].split("月")[1].split("日")[0]
+        const d = e[0].split("-")
+        return d[1] + "月" + d[2]
+        // return 1月1日
     })
     const seriesData = arrayResult.map((e) => {
         let sum = 0

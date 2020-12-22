@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
 import { useUpdate } from "./useUpdate"
-import dayjs from "dayjs"
 
 export type RecordItem = {
     tagIds: number[]
     note: string
     category: string
     amount: string
+    date: string
     createdTime: string // ISO 8601
 }
 
@@ -42,7 +42,8 @@ const useRecords = () => {
 
         let result: { [key: string]: RecordItem[] } = {}
         selectedRecords.forEach((r) => {
-            const key = dayjs(r.createdTime).format("YYYY年MM月DD日")
+            // const key = dayjs(r.createdTime).format("YYYY年MM月DD日")
+            const key = r.date
             if (!result.hasOwnProperty(key)) {
                 result[key] = []
             }
@@ -57,8 +58,8 @@ const useRecords = () => {
         })
         arrayResult.forEach((r) => {
             r[1].sort((a, b) => {
-                if (a.createdTime > b.createdTime) return -1
-                if (a.createdTime < b.createdTime) return 1
+                if (a.date > b.date) return -1
+                if (a.date < b.date) return 1
                 return 0
             })
         })

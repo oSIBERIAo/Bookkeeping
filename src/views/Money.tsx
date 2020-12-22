@@ -14,7 +14,7 @@ const defaultSelected = {
     note: "",
     category: "-",
     amount: "0",
-    day: dayjs(new Date().toISOString()).format("YYYY-MM-DD"),
+    date: dayjs(new Date().toISOString()).format("YYYY-MM-DD"),
 }
 
 const MyLayout = styled(Layout)`
@@ -28,7 +28,7 @@ const MyLayout = styled(Layout)`
     //height: 100vh;
 `
 
-const CategoryNoteSectionWrapper = styled.div`
+const CategoryNoteDateSectionWrapper = styled.div`
     margin: 10px;
     border-radius: 10px;
     overflow: hidden;
@@ -55,6 +55,7 @@ const Money = () => {
     const submit = () => {
         if (addRecord(selected)) {
             alert("保存成功")
+            console.log("selected", selected)
             setSelected(defaultSelected)
         } else {
             alert("保存失败")
@@ -69,24 +70,22 @@ const Money = () => {
                 //解构赋值 {(tagIds) => onChang({ tagIds : tagIds })}
                 onChange={(tagIds) => onChang({ tagIds })}
             />
-
-            <CategoryNoteSectionWrapper>
+            <CategoryNoteDateSectionWrapper>
                 <div>
                     <NoteSection
                         value={selected.note}
                         onChange={(note) => onChang({ note })}
                     />
                     <DateSection
-                        day={selected.day}
-                        onChange={(day) => onChang({ day })}
+                        date={selected.date}
+                        onChange={(date) => onChang({ date })}
                     ></DateSection>
                 </div>
                 <CategorySection
                     value={selected.category}
                     onChange={(category) => onChang({ category })}
                 />
-            </CategoryNoteSectionWrapper>
-
+            </CategoryNoteDateSectionWrapper>
             <NumberPadSection
                 value={selected.amount}
                 onChange={(amount) => onChang({ amount })}

@@ -110,12 +110,12 @@ const Wrapper = styled.section`
 `
 
 type Props = {
-    day: string
+    date: string
     onChange: (selected: string) => void
 }
 
 const DateSection: React.FC<Props> = (props) => {
-    const day = props.day
+    const date = props.date
     const setDay = props.onChange
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -142,7 +142,7 @@ const DateSection: React.FC<Props> = (props) => {
                 type="date"
                 name=""
                 id=""
-                defaultValue={day}
+                defaultValue={date}
                 onChange={(e) => {
                     onChange(e)
                 }}
@@ -157,7 +157,7 @@ const DateSection: React.FC<Props> = (props) => {
                         : "date"
                 }
             >
-                {day.split("-")[2]}
+                {date.split("-")[2]}
             </div>
         </Wrapper>
     )

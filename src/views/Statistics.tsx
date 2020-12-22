@@ -106,6 +106,54 @@ const Statistics = () => {
             bottom: 40,
         },
     }
+    let option2 = {
+        title: {
+            text: "收支统计",
+            padding: 20, //标题内边距,
+            left: "left", //主副标题的水平位置
+            color: "#0D0E56",
+        },
+        xAxis: {
+            type: "category",
+            data: xAxisDate,
+            axisLabel: {
+                show: true,
+                color: "#B9BACE",
+            },
+            axisLine: {
+                show: false,
+                onZero: false,
+            },
+
+            axisTick: {
+                show: true,
+                lineStyle: {
+                    color: "#B9BACE",
+                },
+            },
+        },
+        yAxis: {
+            axisLabel: {
+                show: true,
+                color: "#B9BACE", //这里用参数代替了
+            },
+        },
+        series: [
+            {
+                data: seriesData,
+                type: "line",
+                smooth: true,
+                itemStyle: {
+                    color: "#472FC8",
+                },
+            },
+        ],
+        grid: {
+            left: "15%",
+            right: "20%",
+            bottom: 40,
+        },
+    }
 
     return (
         <Layout>
@@ -120,7 +168,12 @@ const Statistics = () => {
                     />
                     <ReactEcharts option={option}></ReactEcharts>
                 </div>
+                <br />
+                <ReactEcharts option={option2}></ReactEcharts>
             </Wrapper>
+            <br />
+            <br />
+            <br />
         </Layout>
     )
 }

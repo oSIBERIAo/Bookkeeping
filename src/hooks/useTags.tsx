@@ -3,17 +3,17 @@ import { createId } from "../lib/createId"
 import { useUpdate } from "./useUpdate"
 
 const defaultTags = [
-    { id: createId(), icon: "💰", name: "日常支出", category: "-" },
-    { id: createId(), icon: "🍕", name: "吃饭", category: "-" },
-    { id: createId(), icon: "💻", name: "电子消费", category: "-" },
-    { id: createId(), icon: "🚘", name: "出行", category: "-" },
-    { id: createId(), icon: "👚", name: "购物", category: "-" },
+    { id: 1, icon: "💰", name: "日常支出", category: "-" },
+    { id: 2, icon: "🍕", name: "吃饭", category: "-" },
+    { id: 3, icon: "💻", name: "电子消费", category: "-" },
+    { id: 4, icon: "🚘", name: "出行", category: "-" },
+    { id: 5, icon: "👚", name: "购物", category: "-" },
 
-    { id: createId(), icon: "💸", name: "日常收入", category: "+" },
-    { id: createId(), icon: "🧮", name: "理财", category: "+" },
-    { id: createId(), icon: "📈", name: "股票", category: "+" },
-    { id: createId(), icon: "🔖", name: "购物", category: "+" },
-    { id: createId(), icon: "🐟", name: "闲置出售", category: "+" },
+    { id: 101, icon: "💸", name: "日常收入", category: "+" },
+    { id: 102, icon: "🧮", name: "理财", category: "+" },
+    { id: 103, icon: "📈", name: "股票", category: "+" },
+    { id: 104, icon: "🔖", name: "购物", category: "+" },
+    { id: 105, icon: "🐟", name: "闲置出售", category: "+" },
 ]
 
 type Tag = { id: number; icon: string; name: string; category: string }[]

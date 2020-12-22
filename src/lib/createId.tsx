@@ -1,4 +1,4 @@
-let id = parseInt(window.localStorage.getItem("idMax") || "0")
+let id = parseInt(window.localStorage.getItem("idMax") || "200")
 
 const createId = () => {
     id = id + 1

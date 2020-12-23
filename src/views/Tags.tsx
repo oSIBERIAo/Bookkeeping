@@ -10,8 +10,12 @@ import { CategorySection } from "./Money/CategorySection"
 import { Title } from "../components/Title"
 
 const TagList = styled.ol`
+    margin: 0 20px;
+    border-radius: 10px;
+    overflow: hidden;
     background-color: white;
     li {
+        //outline: 1px solid red;
         display: flex;
         padding: 12px 16px 12px 0;
         margin-left: 16px;
@@ -22,7 +26,18 @@ const TagList = styled.ol`
             height: 1rem;
             width: 1rem;
         }
+        :before {
+            position: absolute;
+            content: "";
+            display: block;
+            bottom: 0;
+            height: 1px;
+            width: 90%;
+            left: 5%;
+            background-color: #f1f4ff;
+        }
     }
+
     button {
         background-color: white;
         display: inline-block;
@@ -83,6 +98,7 @@ const CategoryWrapper = styled.div`
         }
     }
 `
+
 const Tags = () => {
     const { tags } = useTags()
     const [category, setCategory] = useState<string>("-")

@@ -7,6 +7,7 @@ import { Link } from "react-router-dom"
 import { Center } from "../components/Center"
 import { Space } from "../components/Space"
 import { CategorySection } from "./Money/CategorySection"
+import { Title } from "../components/Title"
 
 const TagList = styled.ol`
     background-color: white;
@@ -57,8 +58,30 @@ const MyCenter = styled(Center)`
     }
 `
 const CategoryWrapper = styled.div`
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0);
     margin-bottom: 10px;
+    > section {
+        padding: 0 0 10px 0;
+        width: 90%;
+        margin: auto;
+        > ul {
+            background-color: rgba(0, 0, 0, 0);
+            border-radius: 40px;
+            > li {
+                line-height: 20px;
+                font-size: 14px;
+                padding: 10px;
+                border-radius: 40px;
+                color: #0d0e56;
+                &.selected {
+                    font-size: 18px;
+                    border-radius: 40px;
+                    color: white;
+                    background-color: #472fc8;
+                }
+            }
+        }
+    }
 `
 const Tags = () => {
     const { tags } = useTags()
@@ -68,6 +91,7 @@ const Tags = () => {
 
     return (
         <Layout>
+            <Title>标签</Title>
             <CategoryWrapper>
                 <CategorySection
                     value={category}

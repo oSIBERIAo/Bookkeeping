@@ -4,13 +4,53 @@ import { CategorySection } from "./Money/CategorySection"
 import styled from "styled-components"
 import { useRecords } from "../hooks/useRecords"
 import { useTags } from "../hooks/useTags"
+import { Title } from "../components/Title"
 
 const CategoryWrapper = styled.div`
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0);
     margin-bottom: 10px;
+    > section {
+        padding: 0 0 10px 0;
+        width: 90%;
+        margin: auto;
+        > ul {
+            background-color: rgba(0, 0, 0, 0);
+            border-radius: 40px;
+            > li {
+                line-height: 20px;
+                font-size: 14px;
+                padding: 10px;
+                border-radius: 40px;
+                color: #0d0e56;
+                &.selected {
+                    font-size: 18px;
+                    border-radius: 40px;
+                    color: white;
+                    background-color: #472fc8;
+                }
+            }
+        }
+    }
+`
+
+const DetailWrapper = styled.div`
+    margin: 0 20px;
+    border-radius: 10px;
+    overflow: hidden;
 `
 const Header = styled.h4`
-    padding: 4px 16px;
+    //outline: 1px solid red;
+    padding: 20px 16px 4px 0;
+    > div {
+        color: #344563;
+        opacity: 0.5;
+        background: #f2f4f7;
+        box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+        display: inline-block;
+        padding: 2px 14px 2px;
+        //border: 1px solid red;
+        border-radius: 10px;
+    }
 `
 const Item = styled.div`
     background-color: white;
@@ -19,7 +59,13 @@ const Item = styled.div`
     justify-content: space-between;
     align-items: center;
     position: relative;
-    &:before {
+    :last-child {
+        border-radius: 0 0 10px 10px;
+    }
+    :first-child {
+        border-radius: 10px 10px 0 0;
+    }
+    &:not(:last-child):before {
         position: absolute;
         content: "";
         display: block;
@@ -31,6 +77,9 @@ const Item = styled.div`
     }
     > .tags {
         padding-right: 20px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         > span {
             background-color: #f1f4ff;
             display: inline-block;
@@ -45,9 +94,14 @@ const Item = styled.div`
         }
     }
     > .note {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         margin-right: auto;
     }
     > .amount {
+        white-space: nowrap;
+        text-overflow: ellipsis;
         margin-right: 10px;
     }
 `
@@ -61,6 +115,7 @@ const Detail = () => {
 
     return (
         <Layout>
+            <Title>明细</Title>
             <CategoryWrapper>
                 <CategorySection
                     value={category}
@@ -70,8 +125,10 @@ const Detail = () => {
                 />
             </CategoryWrapper>
             {arrayResult.map(([data, records]) => (
-                <div key={data}>
-                    <Header>{data}</Header>
+                <DetailWrapper key={data}>
+                    <Header>
+                        <div>{data}</div>
+                    </Header>
                     <div>
                         {records.map((e) => {
                             return (
@@ -95,8 +152,10 @@ const Detail = () => {
                             )
                         })}
                     </div>
-                </div>
+                </DetailWrapper>
             ))}
+            <br />
+            <br />
         </Layout>
     )
 }

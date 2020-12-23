@@ -7,7 +7,7 @@ import { useTags } from "../hooks/useTags"
 import { option1, option2, option3 } from "./Statistics/EchartsOption"
 
 import { ReactEcharts } from "../components/ReactEcharts"
-import { Space } from "../components/Space"
+import { Title } from "../components/Title"
 
 const Wrapper = styled.div`
     > div {
@@ -59,6 +59,7 @@ const Wrapper = styled.div`
         }
     }
 `
+
 const Statistics = () => {
     const [category, setCategory] = useState<string>("-")
 
@@ -134,7 +135,7 @@ const Statistics = () => {
 
     return (
         <Layout>
-            <Space />
+            <Title>统计</Title>
             <Wrapper>
                 <div>
                     <CategorySection

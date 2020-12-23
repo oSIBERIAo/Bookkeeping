@@ -13,13 +13,15 @@ const Topbar = styled.header`
     justify-content: space-between;
     line-height: 20px;
     padding: 14px;
-    background: white;
+    color: #0d0e56;
+    font-weight: bold;
 `
 
 const InputWrapper = styled.div`
     padding: 6px 14px;
     background: white;
-    margin-top: 8px;
+    margin: 8px 20px 20px;
+    border-radius: 10px;
     span {
         color: #666;
         margin-right: 16px;
@@ -60,6 +62,16 @@ const InputWrapper = styled.div`
             position: absolute;
             opacity: 0; /*完全透明*/
         }
+    }
+`
+const MyCenter = styled(Center)`
+    padding-top: 40px;
+    display: flex;
+    flex-direction: row;
+    Button {
+        font-size: 25px;
+        padding: 5px 12px;
+        border-radius: 40px;
     }
 `
 
@@ -128,7 +140,7 @@ const AddTag: React.FC = () => {
                 </div>
             </InputWrapper>
 
-            <Center>
+            <MyCenter>
                 <Space />
                 <Button
                     onClick={() => {
@@ -136,9 +148,9 @@ const AddTag: React.FC = () => {
                         onClickBack()
                     }}
                 >
-                    添加标签
+                    💾
                 </Button>
-            </Center>
+            </MyCenter>
         </div>
     )
 
@@ -146,7 +158,7 @@ const AddTag: React.FC = () => {
         <Layout>
             <Topbar>
                 <Icon name="left" onClick={onClickBack} />
-                <span>编辑标签</span>
+                <span>添加标签</span>
                 <span />
             </Topbar>
             {newTag ? tagContent() : <Center>"Tag 不存在"</Center>}

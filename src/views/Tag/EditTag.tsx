@@ -14,13 +14,15 @@ const Topbar = styled.header`
     justify-content: space-between;
     line-height: 20px;
     padding: 14px;
-    background: white;
+    color: #0d0e56;
+    font-weight: bold;
 `
 
 const InputWrapper = styled.div`
     padding: 6px 14px;
     background: white;
-    margin-top: 8px;
+    margin: 8px 20px 20px;
+    border-radius: 10px;
 `
 
 const MyCenter = styled(Center)`

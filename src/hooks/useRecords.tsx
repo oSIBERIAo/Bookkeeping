@@ -30,7 +30,11 @@ const useRecords = () => {
             return false
         }
         if (newRecord.tagIds.length === 0) {
-            return false
+            if (newRecord.category === "-") {
+                newRecord.tagIds = [1]
+            } else {
+                newRecord.tagIds = [101]
+            }
         }
         const record = { ...newRecord, createdTime: new Date().toISOString() }
         setRecords([...records, record])

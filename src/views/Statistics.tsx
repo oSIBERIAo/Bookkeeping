@@ -3,6 +3,8 @@ import { Layout } from "../components/Layout"
 import { CategorySection } from "./Money/CategorySection"
 import styled from "styled-components"
 import { useRecords } from "../hooks/useRecords"
+import { useTags } from "../hooks/useTags"
+import { option1, option2, option3 } from "./Statistics/EchartsOption"
 
 import { ReactEcharts } from "../components/ReactEcharts"
 import { Space } from "../components/Space"
@@ -36,12 +38,35 @@ const Wrapper = styled.div`
             }
         }
     }
+    .Breakdown {
+        //border: 1px solid green;
+        background-color: rgba(0, 0, 0, 0);
+        //display: list-item;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap: wrap;
+        > div {
+            //display: inline-block;
+            //border: 1px solid red;
+            width: 31%;
+            margin-top: 20px;
+            border-radius: 10px;
+            :last-child:nth-child(3n - 1) {
+                //border: 2px solid green;
+                margin-right: calc(35%);
+            }
+        }
+    }
 `
 const Statistics = () => {
     const [category, setCategory] = useState<string>("-")
 
-    const { selectedRecordsByCategory } = useRecords()
+    const { selectedRecordsByCategory, records } = useRecords()
     const arrayResult = selectedRecordsByCategory(category)
+
+    const { tags } = useTags()
+    const selectedTags = tags.filter((r) => r.category === category)
 
     const xAxisDate = arrayResult.map((e) => {
         const d = e[0].split("-")
@@ -56,103 +81,55 @@ const Statistics = () => {
         return sum
     })
 
-    let option = {
-        title: {
-            text: "收支统计",
-            padding: 20, //标题内边距,
-            left: "left", //主副标题的水平位置
-            color: "#0D0E56",
-        },
-        tooltip: {},
-        xAxis: {
-            data: xAxisDate,
-            axisLabel: {
-                show: true,
-                color: "#B9BACE",
-            },
-            axisLine: {
-                show: false,
-                onZero: false,
-            },
+    const EchartsOption1 = (() => {
+        let o = JSON.parse(JSON.stringify(option1))
+        o.xAxis.data = xAxisDate
+        o.series[0].data = seriesData
+        return o
+    })()
+    const EchartsOption2 = (() => {
+        let o = JSON.parse(JSON.stringify(option2))
+        o.xAxis.data = xAxisDate
+        o.series[0].data = seriesData
+        return o
+    })()
 
-            axisTick: {
-                show: true,
-                lineStyle: {
-                    color: "#B9BACE",
-                },
-            },
-        },
-        yAxis: {
-            axisLabel: {
-                show: true,
-                color: "#B9BACE", //这里用参数代替了
-            },
-        },
-        series: [
-            {
-                name: "收支",
-                type: "bar",
-                data: seriesData,
-                barWidth: 12,
-                itemStyle: {
-                    borderRadius: [100, 100, 0, 0], // 统一设置四个角的圆角大小
-                    color: "#472FC8",
-                },
-            },
-        ],
-        grid: {
-            left: "15%",
-            right: "20%",
-            bottom: 40,
-        },
+    // Option3
+    type Tag = { id: number; icon: string; name: string; category: string }
+    // 单个Tag总金额
+    const sumByTags = (e: Tag) => {
+        // console.log(e)
+        let sum = 0
+        records.forEach((r) => {
+            if (r.tagIds[0] === e.id) {
+                sum = sum + parseFloat(r.amount)
+            }
+        })
+        return sum
     }
-    let option2 = {
-        title: {
-            text: "收支统计",
-            padding: 20, //标题内边距,
-            left: "left", //主副标题的水平位置
-            color: "#0D0E56",
-        },
-        xAxis: {
-            type: "category",
-            data: xAxisDate,
-            axisLabel: {
-                show: true,
-                color: "#B9BACE",
-            },
-            axisLine: {
-                show: false,
-                onZero: false,
-            },
-
-            axisTick: {
-                show: true,
-                lineStyle: {
-                    color: "#B9BACE",
-                },
-            },
-        },
-        yAxis: {
-            axisLabel: {
-                show: true,
-                color: "#B9BACE", //这里用参数代替了
-            },
-        },
-        series: [
-            {
-                data: seriesData,
-                type: "line",
-                smooth: true,
-                itemStyle: {
-                    color: "#472FC8",
-                },
-            },
-        ],
-        grid: {
-            left: "15%",
-            right: "20%",
-            bottom: 40,
-        },
+    // 总金额
+    const sumAmountByRecords = (() => {
+        let sum = 0
+        records.forEach((r) => {
+            sum = sum + parseFloat(r.amount)
+        })
+        return sum
+    })()
+    const EchartsOptionByTag = (e: Tag) => {
+        // console.log("e", e)
+        let o = JSON.parse(JSON.stringify(option3))
+        // Tag icon  o.series[2].data[0]
+        o.series[2].data[0].name = e.icon
+        // Tag name  o.series[2].data[0]
+        o.title[0].text = e.name
+        // Tag sum 分类消费  o.series[2].data[0]
+        let sum = sumByTags(e)
+        o.series[2].detail.formatter = function () {
+            return "¥" + sum
+        }
+        // Tag sum 分类消费/总额 百分比  o.series[2].data[0]
+        o.series[0].data[0].value = (sum / sumAmountByRecords) * 100
+        return o
     }
 
     return (
@@ -166,10 +143,23 @@ const Statistics = () => {
                             setCategory(value)
                         }}
                     />
-                    <ReactEcharts option={option}></ReactEcharts>
+                    <ReactEcharts option={EchartsOption1}></ReactEcharts>
                 </div>
                 <br />
-                <ReactEcharts option={option2}></ReactEcharts>
+                <ReactEcharts option={EchartsOption2}></ReactEcharts>
+                <br />
+                <div className="Breakdown">
+                    {selectedTags.map((e) => {
+                        return (
+                            <ReactEcharts
+                                option={EchartsOptionByTag(e)}
+                                width={"100%"}
+                                height={"36vw"}
+                                key={e.id}
+                            ></ReactEcharts>
+                        )
+                    })}
+                </div>
             </Wrapper>
             <br />
             <br />

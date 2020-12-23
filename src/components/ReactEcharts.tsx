@@ -5,6 +5,8 @@ import styled from "styled-components"
 
 type Props = {
     option: any
+    width?: string
+    height?: string
 }
 
 const Wrapper = styled.div`
@@ -28,6 +30,12 @@ const ReactEcharts = (props: Props) => {
         if (null !== container.current) {
             container.current.style.width = `${width}px`
             container.current.style.height = `300px`
+            if (props.width != null) {
+                container.current.style.width = props.width
+            }
+            if (props.height != null) {
+                container.current.style.height = props.height
+            }
             if (chart.current) {
                 chart.current.dispose() // 解决报错 There is a chart instance already initialized on the dom.
             }

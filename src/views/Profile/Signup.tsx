@@ -1,14 +1,13 @@
-import React, { useState } from "react"
+import React from "react"
 import { Layout } from "../../components/Layout"
-import { useTags } from "../../hooks/useTags"
 import { Icon } from "../../components/Icon"
-// import { Button } from "../../components/Button"
 import styled from "styled-components"
-// import { Input } from "../../components/Input"
-import { Center } from "../../components/Center"
-import { Space } from "../../components/Space"
 
 import { Form, Input, Button, Checkbox } from "antd"
+import "antd/es/form/style/index.css" // 手动按需引入input样式
+import "antd/es/input/style/index.css"
+import "antd/es/button/style/index.css"
+import "antd/es/checkbox/style/index.css"
 
 const Topbar = styled.header`
     display: flex;
@@ -19,22 +18,34 @@ const Topbar = styled.header`
     font-weight: bold;
 `
 const FromWrapper = styled.div`
-    //margin: 10px;
-    //display: flex;
-    //justify-content: center;
-    width: 90%;
-`
-const MyCenter = styled(Center)`
-    padding-top: 40px;
-    display: flex;
-    flex-direction: row;
-    Button {
-        font-size: 25px;
-        padding: 5px 12px;
-        border-radius: 40px;
+    margin: 30px;
+
+    form {
+        input {
+            line-height: 2.5;
+            //border-radius: 20px;
+        }
+        button {
+            font-weight: 800;
+            height: 42px;
+            padding: 4px 21px;
+            border-radius: 21px;
+            margin-left: 50%;
+            transform: translate(-50%, 0px);
+            background: #472fc8;
+            border-color: #472fc8;
+        }
+        .ant-checkbox-checked .ant-checkbox-inner {
+            background: #472fc8;
+            border-color: #472fc8;
+        }
+        input,
+        .ant-input-affix-wrapper {
+            border-radius: 10px;
+            border-color: white;
+        }
     }
 `
-
 const layout = {
     labelCol: { span: 8 },
     wrapperCol: { span: 16 },
@@ -44,52 +55,59 @@ const tailLayout = {
 }
 
 const Signup: React.FC = () => {
-    const { addTag } = useTags()
-
-    type Tag = { username: string; password: string; checkPass: string }
-    const [user, setUser] = useState<Tag>({
-        username: "",
-        password: "",
-        checkPass: "",
-    })
+    // type Tag = { username: string; password: string; checkPass: string }
+    // const [user, setUser] = useState<Tag>({
+    //     username: "",
+    //     password: "",
+    //     checkPass: "",
+    // })
 
     const onClickBack = () => {
         window.history.back()
     }
 
-    const tagContent = () => (
-        <div>
-            {/*<InputWrapper>*/}
-            {/*    <Input*/}
-            {/*        type="text"*/}
-            {/*        label="用户名:"*/}
-            {/*        placeholder="请输入 用户名 表情 如：Mister"*/}
-            {/*        value={user.username}*/}
-            {/*        onChange={(e) => {*/}
-            {/*            setUser({ ...user, username: e.target.value })*/}
-            {/*        }}*/}
-            {/*    />*/}
-            {/*</InputWrapper>*/}
-
-            <MyCenter>
-                <Space />
-                <Button
-                    onClick={() => {
-                        // addTag(newTag)
-                        onClickBack()
-                    }}
-                >
-                    💾
-                </Button>
-            </MyCenter>
-        </div>
-    )
     const onFinish = (values: any) => {
         console.log("Success:", values)
     }
 
     const onFinishFailed = (errorInfo: any) => {
         console.log("Failed:", errorInfo)
+    }
+    const rules = {
+        username: [
+            {
+                required: true,
+                message: "Please input your username!",
+            },
+        ],
+        password: [
+            {
+                required: true,
+                message: "Please input your password!",
+            },
+        ],
+        confirm: () => {
+            return [
+                {
+                    required: true,
+                    message: "Please confirm your password!",
+                },
+                // @ts-ignore
+                ({ getFieldValue }) => ({
+                    validator(_: any, value: any) {
+                        if (!value || getFieldValue("password") === value) {
+                            return Promise.resolve()
+                        }
+
+                        return Promise.reject(
+                            new Error(
+                                "The two passwords that you entered do not match!"
+                            )
+                        )
+                    },
+                }),
+            ]
+        },
     }
 
     return (
@@ -108,57 +126,26 @@ const Signup: React.FC = () => {
                     onFinishFailed={onFinishFailed}
                 >
                     <Form.Item
-                        label="Username"
+                        label="用户名"
                         name="username"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Please input your username!",
-                            },
-                        ]}
+                        rules={rules.username}
                     >
                         <Input />
                     </Form.Item>
 
                     <Form.Item
-                        label="Password"
+                        label="密码"
                         name="password"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Please input your password!",
-                            },
-                        ]}
+                        rules={rules.password}
                     >
                         <Input.Password />
                     </Form.Item>
                     <Form.Item
                         name="confirm"
-                        label="Confirm Password"
+                        label="确认密码"
                         dependencies={["password"]}
                         hasFeedback
-                        rules={[
-                            {
-                                required: true,
-                                message: "Please confirm your password!",
-                            },
-                            ({ getFieldValue }) => ({
-                                validator(_, value) {
-                                    if (
-                                        !value ||
-                                        getFieldValue("password") === value
-                                    ) {
-                                        return Promise.resolve()
-                                    }
-
-                                    return Promise.reject(
-                                        new Error(
-                                            "The two passwords that you entered do not match!"
-                                        )
-                                    )
-                                },
-                            }),
-                        ]}
+                        rules={rules.confirm()}
                     >
                         <Input.Password />
                     </Form.Item>

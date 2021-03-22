@@ -92,7 +92,7 @@ const Nav = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/tips" activeClassName="selected">
+                    <NavLink to="profile" activeClassName="selected">
                         <Icon name={"tips"} />
                         理财
                     </NavLink>

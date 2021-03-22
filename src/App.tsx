@@ -7,6 +7,7 @@ import {
     // Link,
     Redirect,
 } from "react-router-dom"
+
 import "./App.css"
 // eslint-disable-next-line
 
@@ -16,6 +17,9 @@ import { EditTag } from "./views/Tag/EditTag"
 import { AddTag } from "./views/Tag/AddTag"
 import { Detail } from "./views/Detail"
 import { Statistics } from "./views/Statistics"
+
+import { Profile } from "./views/Profile"
+import { Signup } from "./views/Profile/Signup"
 
 function App() {
     return (
@@ -39,6 +43,14 @@ function App() {
                 <Route exact path="/statistics">
                     <Statistics />
                 </Route>
+
+                <Route exact path="/profile">
+                    <Profile />
+                </Route>
+                <Route exact path="/signup">
+                    <Signup />
+                </Route>
+
                 <Redirect exact from="/" to="Money" />
                 <Route path="/*">
                     <NoMatch />

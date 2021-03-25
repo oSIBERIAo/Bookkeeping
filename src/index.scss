@@ -20,6 +20,11 @@ ol {
     list-style: none;
 }
 
+// 解决antd 问题
+ol, ul, dl {
+    margin: auto;
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -72,4 +77,22 @@ input {
 
 ::-webkit-scrollbar {
     display: none; /* Chrome Safari */
+}
+
+//antd 样式覆盖
+.ant-modal-root{
+    .ant-btn{
+        border-radius: 10px;
+    }
+
+    .ant-btn:hover, .ant-btn:focus {
+        color: #472fc8;
+        //background: #fff;
+        border-color: #472fc8;
+    }
+    .ant-btn-primary .ant-btn:hover, .ant-btn:focus{
+        color: white;
+        background: #472fc8;
+        border-color: #472fc8;
+    }
 }

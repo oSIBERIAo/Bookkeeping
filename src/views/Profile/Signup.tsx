@@ -7,12 +7,6 @@ import { url } from "request/api"
 
 import { Form, Input, Button, Checkbox, message } from "antd"
 
-import "antd/es/form/style/index.css" // 手动按需引入input样式
-import "antd/es/input/style/index.css"
-import "antd/es/button/style/index.css"
-import "antd/es/checkbox/style/index.css"
-import "antd/es/message/style/index.css"
-
 const Topbar = styled.header`
     display: flex;
     justify-content: space-between;

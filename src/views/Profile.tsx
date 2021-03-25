@@ -9,7 +9,6 @@ import styled from "styled-components"
 import { Icon } from "../components/Icon"
 
 import { Modal, message } from "antd"
-// import "antd/es/modal/style/css"
 
 const List = styled.ol`
     margin: 0 20px;
@@ -73,6 +72,7 @@ type Key = "idMax" | "records" | "tags"
 
 const Profile = () => {
     const keys = ["records", "tags", "idMax"]
+
     const setItem = (data: any, e: Key) => {
         if (data === "[]") {
             window.localStorage.setItem(e, "[]")
@@ -81,6 +81,27 @@ const Profile = () => {
             console.log("data[e]", data?.[e])
             window.localStorage.setItem(e, String(data[e]))
         }
+    }
+
+    const { confirm } = Modal
+
+    const downloadDataConfirm = () => {
+        confirm({
+            title: "是否下载云端数据并同步到本地？",
+            content: "将清除本地数据并下载云端数据",
+            onOk() {
+                downloadData()
+            },
+            onCancel() {
+                console.log("Cancel")
+            },
+            style: {
+                borderRadius: 10,
+                background: "white",
+                overflow: "hidden",
+                padding: 0,
+            },
+        })
     }
     const downloadData = () => {
         axios
@@ -159,7 +180,7 @@ const Profile = () => {
             <Title>个人</Title>
             <br />
             <List>
-                <div onClick={downloadData}>
+                <div onClick={downloadDataConfirm}>
                     <li>
                         <span>📥&nbsp;&nbsp;&nbsp; 下载云端数据</span>
                     </li>

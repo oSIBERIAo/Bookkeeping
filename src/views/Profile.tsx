@@ -92,15 +92,7 @@ const Profile = () => {
             onOk() {
                 downloadData()
             },
-            onCancel() {
-                console.log("Cancel")
-            },
-            style: {
-                borderRadius: 10,
-                background: "white",
-                overflow: "hidden",
-                padding: 0,
-            },
+            onCancel() {},
         })
     }
     const downloadData = () => {
@@ -128,6 +120,16 @@ const Profile = () => {
             })
     }
 
+    const uploadDataConfirm = () => {
+        confirm({
+            title: "是否上传本地数据并同步到云端？",
+            content: "将上传本地数据并更新云端数据",
+            onOk() {
+                uploadData()
+            },
+            onCancel() {},
+        })
+    }
     const uploadData = () => {
         let d = new FormData()
         const getItem = (e: string) => {
@@ -156,6 +158,16 @@ const Profile = () => {
             })
     }
 
+    const clearDataConfirm = () => {
+        confirm({
+            title: "是否清除本地记账数据？",
+            content: "将清除本地记账数据数据",
+            onOk() {
+                clearData()
+            },
+            onCancel() {},
+        })
+    }
     const clearData = () => {
         keys.forEach((e) => {
             setItem("[]", e as "idMax" | "records" | "tags")
@@ -165,6 +177,16 @@ const Profile = () => {
         })
     }
 
+    const logoutConfirm = () => {
+        confirm({
+            title: "是否退出登录？",
+            content: "将退出用户登录状态",
+            onOk() {
+                logout()
+            },
+            onCancel() {},
+        })
+    }
     const logout = () => {
         const user = ["user_username", "token", "user_id"]
         user.forEach((e) => {
@@ -185,7 +207,7 @@ const Profile = () => {
                         <span>📥&nbsp;&nbsp;&nbsp; 下载云端数据</span>
                     </li>
                 </div>
-                <div onClick={uploadData}>
+                <div onClick={uploadDataConfirm}>
                     <li>
                         <span>📤&nbsp;&nbsp;&nbsp; 上传本地数据</span>
                     </li>
@@ -208,12 +230,12 @@ const Profile = () => {
             </List>
             <br />
             <List>
-                <div onClick={clearData}>
+                <div onClick={clearDataConfirm}>
                     <li>
                         <span>🆑&nbsp;&nbsp;&nbsp; 清除数据</span>
                     </li>
                 </div>
-                <div onClick={logout}>
+                <div onClick={logoutConfirm}>
                     <li>
                         <span className="red">
                             🔓&nbsp;&nbsp;&nbsp; 退出登录

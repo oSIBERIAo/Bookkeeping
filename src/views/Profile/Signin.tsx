@@ -1,4 +1,5 @@
 import React from "react"
+import { useHistory } from "react-router-dom"
 import { Layout } from "../../components/Layout"
 import { Icon } from "../../components/Icon"
 import styled from "styled-components"
@@ -58,10 +59,11 @@ const tailLayout = {
     wrapperCol: { offset: 8, span: 16 },
 }
 
-const Signup: React.FC = () => {
+const Signin: React.FC = () => {
     const onClickBack = () => {
         window.history.back()
     }
+    const history = useHistory()
 
     const onFinish = (values: any) => {
         console.log("Success:", values)
@@ -69,16 +71,26 @@ const Signup: React.FC = () => {
         data.append("username", values.username)
         data.append("password", values.password)
         axios
-            .post(url.register, data)
+            .post(url.token, data)
             .then((response) => {
                 console.log("response", response)
-                message.success("注册成功", 3, () => {
+                message.success("登录成功", 3, () => {
                     setTimeout(message.destroy, 3000)
                 })
+                localStorage.setItem(
+                    "token",
+                    "Basic " + btoa(response.data.token + ":")
+                )
+                localStorage.setItem("user_id", response.data.user_id)
+                localStorage.setItem(
+                    "user_username",
+                    response.data.user_username
+                )
+                history.push("/profile")
             })
             .catch((error) => {
                 console.log("error", error)
-                message.error("注册失败", 3, () => {
+                message.error("登录失败", 3, () => {
                     setTimeout(message.destroy, 3000)
                 })
             })
@@ -100,35 +112,13 @@ const Signup: React.FC = () => {
                 message: "Please input your password!",
             },
         ],
-        confirm: () => {
-            return [
-                {
-                    required: true,
-                    message: "Please confirm your password!",
-                },
-                // @ts-ignore
-                ({ getFieldValue }) => ({
-                    validator(_: any, value: any) {
-                        if (!value || getFieldValue("password") === value) {
-                            return Promise.resolve()
-                        }
-
-                        return Promise.reject(
-                            new Error(
-                                "The two passwords that you entered do not match!"
-                            )
-                        )
-                    },
-                }),
-            ]
-        },
     }
 
     return (
         <Layout>
             <Topbar>
                 <Icon name="left" onClick={onClickBack} />
-                <span>注册用户</span>
+                <span>用户登录</span>
                 <span />
             </Topbar>
             <FromWrapper>
@@ -155,16 +145,6 @@ const Signup: React.FC = () => {
                         <Input.Password />
                     </Form.Item>
                     <Form.Item
-                        name="confirm"
-                        label="确认密码"
-                        dependencies={["password"]}
-                        hasFeedback
-                        rules={rules.confirm()}
-                    >
-                        <Input.Password />
-                    </Form.Item>
-
-                    <Form.Item
                         {...tailLayout}
                         name="remember"
                         valuePropName="checked"
@@ -183,4 +163,4 @@ const Signup: React.FC = () => {
     )
 }
 
-export { Signup }
+export { Signin }

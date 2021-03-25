@@ -20,6 +20,7 @@ import { Statistics } from "./views/Statistics"
 
 import { Profile } from "./views/Profile"
 import { Signup } from "./views/Profile/Signup"
+import { Signin } from "./views/Profile/Signin"
 
 function App() {
     return (
@@ -49,6 +50,9 @@ function App() {
                 </Route>
                 <Route exact path="/signup">
                     <Signup />
+                </Route>
+                <Route exact path="/signin">
+                    <Signin />
                 </Route>
 
                 <Redirect exact from="/" to="Money" />

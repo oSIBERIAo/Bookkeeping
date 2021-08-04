@@ -30,7 +30,8 @@ const url: Url = {
     update: "/v1/bookkeeping/update",
 }
 
-const host = "http://127.0.0.1:5000"
+// const host = "http://127.0.0.1:5000"
+const host = "http://xi9li.com"
 
 for (const key in url) {
     if (url.hasOwnProperty(key)) {

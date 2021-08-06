@@ -22,6 +22,11 @@ const useTags = () => {
     const [tags, setTags] = useState<Tag>([])
     useEffect(() => {
         // console.log("after mount")
+        let id = window.localStorage.getItem("idMax")
+        if (!id) {
+            window.localStorage.setItem("idMax", "200")
+        }
+
         let t = JSON.parse(window.localStorage.getItem("tags") || "[]")
         if (t.length === 0) {
             t = defaultTags

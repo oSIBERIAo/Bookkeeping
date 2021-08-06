@@ -172,6 +172,7 @@ const Profile = () => {
         keys.forEach((e) => {
             setItem("[]", e as "idMax" | "records" | "tags")
         })
+        window.localStorage.setItem("idMax", "200")
         message.success("清除成功", 3, () => {
             message.destroy()
         })

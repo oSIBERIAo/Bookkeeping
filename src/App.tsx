@@ -8,7 +8,6 @@ import {
     Redirect,
 } from "react-router-dom"
 
-// import "antd/dist/antd.css"
 import "antd/dist/antd.less"
 import "./App.css"
 // eslint-disable-next-line

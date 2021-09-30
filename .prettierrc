@@ -10,7 +10,6 @@
     "jsxBracketSameLine": false,
     "jsxSingleQuote": false,
     "packageManager": "yarn",
-    "prettierPath": "",
     "printWidth": 80,
     "proseWrap": "preserve",
     "quoteProps": "as-needed",

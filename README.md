@@ -1,46 +1,28 @@
-# Getting Started with Create React App
+# Bookkeeping 简账 🧾 🧮
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**一款简约的记账软件，支持登录上传用户数据到云，支持收支可视化。**
 
-## Available Scripts
+**电脑端查看请切换 _手机模式_ 📱**
 
-In the project directory, you can run:
+[试用网站](https://react-bookkeeping.netlify.app/#/money "简账")
 
-### `yarn start`
+![image](https://osiberiao.github.io/Bookkeeping/README/Bookkeeping.webp)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 使用说明
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. 记账上方图标为分类标签，可多选，默认为 💰 日常支出
+2. 可注册登录，登录后可上传同步 ☁️ 记账数据
+3. 测试用户账户 test 密码 123
 
-### `yarn test`
+## 项目介绍
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. 项目技术栈 **React** / **React-router** / **TypeScript** / **Webpack** / **Echarts** / **Hooks** / **Svg icon** 
+2. 使用 **Axios** 封装好请求，并配置好请求拦截器。
+3. 前后端分离，**RESTful API**， 包括 **AJAX**, **Https**， **CORS** 跨域，**Token** 认证 等的运用。后端使用基于 Python 的 **Flask**, **Nginx**。
+4. 使用 **Echarts** 可视化展示统计信息 📈， **Ant Design** 组件库快速开发。  
+5. 使用 **Sketch** 💎 设计 UI， 模块化 UI 组件。
 
-### `yarn build`
+## 扫码体验
+**使用手机自带浏览器打开并 "添加到主屏幕" 以获取更好的使用体验**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![image](https://osiberiao.github.io/Bookkeeping/README/Bookkeeping-QR.webp)

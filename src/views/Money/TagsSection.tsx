@@ -10,7 +10,7 @@ const Wrapper = styled.section`
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
-    height: 30vh;
+    height: 20vh;
     overflow: scroll;
     @media (max-height: 667px) {
         height: 20vh;
